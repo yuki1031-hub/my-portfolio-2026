@@ -1,28 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from "react";
+// ページ切り替え機能（ルーター）を読み込み
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// 各ページを読み込み
-import Home from './Home';
-import Diagnosis from './Diagnosis';   // 性格診断のファイル名に合わせてください
-import AdChatbot from './AdChatbot';   // 広告チャットのファイル名に合わせてください
+// 各ページの部品を読み込み
+import Home from "./Home";
+import Diagnosis from "./Diagnosis";
+import AdChatbot from "./AdChatbot";
+import "./styles.css";
 
-function App() {
+export default function App() {
   return (
     <Router>
-      <div className="App">
-        <Routes>
-          {/* トップページ (ポートフォリオ) */}
-          <Route path="/" element={<Home />} />
-          
-          {/* 性格診断ページ (/diagnosis でアクセス) */}
-          <Route path="/diagnosis" element={<Diagnosis />} />
-          
-          {/* 広告チャットボットページ (/ad-chat でアクセス) */}
-          <Route path="/ad-chat" element={<AdChatbot />} />
-        </Routes>
-      </div>
+      <Routes>
+        {/* URLが「/」のときは Home を表示 */}
+        <Route path="/" element={<Home />} />
+        
+        {/* URLが「/diagnosis」のときは 性格診断だけ を表示 */}
+        <Route path="/diagnosis" element={<Diagnosis />} />
+
+        {/* URLが「/ad-chatbot」のときは 広告ボットだけ を表示 */}
+        <Route path="/ad-chatbot" element={<AdChatbot />} />
+      </Routes>
     </Router>
   );
 }
-
-export default App;
