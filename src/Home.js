@@ -234,7 +234,7 @@ const Home = () => {
                 <div className="tech-stack-mini">
                   <span>React</span><span>Marketing</span>
                 </div>
-                <Link to="/ad-chat" className="link-text">
+                <Link to="/ad-chatbot" className="link-text">
                   View Demo <IconExternal />
                 </Link>
               </div>
