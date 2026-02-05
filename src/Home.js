@@ -204,7 +204,7 @@ const Home = () => {
                <span className="chatbot-icon-large">💬</span>
                <h4>チャットボットのイメージ</h4>
                <p className="chatbot-group-desc">
-                 （画像をクリックするとデモ画面へ移動します）
+                 （View Demoをクリックするとデモ画面へ移動します）
                </p>
             </div>
 
@@ -214,7 +214,8 @@ const Home = () => {
                 <h4>性格診断チャットボット</h4>
                 <p className="work-desc-sm">
                   <strong>【概要】</strong><br/>
-                  ユーザーの能動的なアクションを引き出し、エンゲージメントを高めるコンテンツ
+                  LINE LIFF 上で動作する「偉人タイプ診断」アプリケーションです。
+                   ユーザーの回答に合わせて歴史上の偉人を判定し、結果画像を生成・表示します。
                 </p>
                 <div className="tech-stack-mini">
                   <span>React</span><span>UI/UX</span>
@@ -229,7 +230,7 @@ const Home = () => {
                 <h4>広告型チャットボット</h4>
                 <p className="work-desc-sm">
                   <strong>【概要】</strong><br/>
-                  LPからの離脱を防ぎ、チャット形式で商品理解を促すことでCVR（コンバージョン率）を向上させるコンテンツ
+                  LINE LIFF 上で動作する「クレジットカードのCVを目的とした」広告型のアプリケーションです
                 </p>
                 <div className="tech-stack-mini">
                   <span>React</span><span>Marketing</span>
