@@ -721,34 +721,6 @@ ul {
   display: block;
 }
 
-.carousel-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding-bottom: 10px;
-  margin-left: 50px;
-  margin-bottom: 20px;
-  scrollbar-width: none;
-}
-
-.carousel-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel-card {
-  min-width: 140px;
-  background-color: #d9d9d9;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.carousel-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
 
 .options-area {
   margin-top: 20px;
@@ -792,4 +764,70 @@ ul {
 
 .chat-option-btn:last-child {
   margin-bottom: 0;
+}
+
+/* カルーセル全体を囲むコンテナ */
+.carousel-scroll {
+  display: flex;
+  overflow-x: auto;
+  /* ここで横スクロールを有効化 */
+  gap: 12px;
+  /* カード同士の隙間 */
+  padding: 10px 5px;
+  /* スクロールバーが画像に被らないように余白を追加 */
+  -webkit-overflow-scrolling: touch;
+  /* スマホでのスクロールを滑らかにする魔法の1行 */
+}
+
+/* スクロールバーを非表示にしてモダンに見せる（お好みで） */
+.carousel-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* カルーセルの中の各カード */
+.carousel-card {
+  flex: 0 0 auto;
+  /* ★超重要：画像が潰れて縮むのを防ぐ */
+  width: 75%;
+  /* 画面幅の75%に設定。次の画像が画面端からチラ見えしてスクロールを促します */
+  max-width: 240px;
+  /* PCなど画面が大きい時の最大幅 */
+}
+
+/* カード内の画像 */
+.carousel-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  /* 角を丸くして柔らかい印象に */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* 少し影をつけるとカードっぽさが出ます */
+  object-fit: cover;
+}
+
+/* =========================================
+   Responsive Adjustments
+   ========================================= */
+@media (max-width: 768px) {
+  .cyberpunk-theme .hero-title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    word-break: break-all;
+    padding: 0 10px;
+  }
+
+  .cyberpunk-theme .hero-subtitle {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .cyberpunk-theme .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+  }
+
+  .cyberpunk-theme .glitch::before,
+  .cyberpunk-theme .glitch::after {
+    display: none;
+  }
 }

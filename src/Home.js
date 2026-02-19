@@ -39,12 +39,13 @@ const Home = () => {
                 AI-Powered Prototyper
               </h4>
               <p style={{ marginBottom: '20px', color: '#ccc' }}>
-                An experimental tool that generates React components directly from natural language prompts.
-                Built to accelerate the "Idea to Prototype" cycle.
+                Currently developing multiple web applications and automation tools by deeply integrating AI into the workflow.
+                Focusing on rapid prototyping and transforming ideas into working software through human-AI collaboration.
               </p>
               <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
-                <span className="btn-cyber" style={{ fontSize: '0.7rem' }}>OPENAI API</span>
-                <span className="btn-cyber" style={{ fontSize: '0.7rem' }}>Next.js</span>
+                <span className="btn-cyber" style={{ fontSize: '0.7rem' }}>Gemini 1.5 Pro</span>
+                <span className="btn-cyber" style={{ fontSize: '0.7rem' }}>Google AI Studio</span>
+                <span className="btn-cyber" style={{ fontSize: '0.7rem' }}>Antigravity</span>
               </div>
             </div>
             <div style={{ flex: 1, minWidth: '300px' }}>
@@ -78,7 +79,7 @@ const Home = () => {
             </WireframeReveal>
 
             <WireframeReveal className="cyber-card">
-              <h4 style={{ color: 'var(--neon-cyan)', marginBottom: '15px' }}><Code size={20} /> SKILLS</h4>
+              <h4 style={{ color: 'var(--neon-cyan)', marginBottom: '15px' }}><Code size={20} /> Tech Stack (Co-coded with AI)</h4>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                 {['React', 'TypeScript', 'Node.js', 'Figma', 'Python', 'Git'].map(skill => (
                   <span key={skill} style={{ border: '1px solid var(--neon-yellow)', padding: '2px 8px', fontSize: '0.8rem', color: 'var(--neon-yellow)' }}>
@@ -94,7 +95,7 @@ const Home = () => {
       {/* --- Works --- */}
       <section id="works" className="section">
         <div className="container">
-          <h3 className="section-title glitch" data-text="EXECUTABLES">EXECUTABLES</h3>
+          <h3 className="section-title glitch" data-text="EXECUTABLES">DEPLOYED_PROJECTS</h3>
 
           <div className="works-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px' }}>
 
@@ -115,22 +116,20 @@ const Home = () => {
               </div>
             </WireframeReveal>
 
-            {/* Diagnosis App */}
+            {/* Scenario-based Bot (Merged) */}
             <WireframeReveal className="cyber-card">
-              <h4 style={{ fontSize: '1.2rem', marginBottom: '10px', color: '#fff' }}>Personality Diagnosis</h4>
-              <p style={{ fontSize: '0.9rem', color: '#aaa', marginBottom: '15px' }}>LINE LIFF Application.</p>
-              <Link to="/diagnosis" className="btn-cyber">
-                <ExternalLink size={16} style={{ marginRight: '5px' }} /> DEMO
-              </Link>
-            </WireframeReveal>
-
-            {/* Ad Chatbot */}
-            <WireframeReveal className="cyber-card">
-              <h4 style={{ fontSize: '1.2rem', marginBottom: '10px', color: '#fff' }}>Ad Chatbot</h4>
-              <p style={{ fontSize: '0.9rem', color: '#aaa', marginBottom: '15px' }}>CV Optimization Chatbot.</p>
-              <Link to="/ad-chatbot" className="btn-cyber">
-                <ExternalLink size={16} style={{ marginRight: '5px' }} /> DEMO
-              </Link>
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '10px', color: '#fff' }}>[Conversational UX] Scenario-based Bot</h4>
+              <p style={{ fontSize: '0.9rem', color: '#aaa', marginBottom: '15px' }}>
+                Dynamic scenario branching prototype for conversational UI. Implements gamification elements like personality diagnosis.
+              </p>
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                <Link to="/diagnosis" className="btn-cyber" style={{ fontSize: '0.8rem' }}>
+                  <ExternalLink size={14} style={{ marginRight: '5px' }} /> DIAGNOSIS
+                </Link>
+                <Link to="/ad-chatbot" className="btn-cyber" style={{ fontSize: '0.8rem' }}>
+                  <ExternalLink size={14} style={{ marginRight: '5px' }} /> AD CHATBOT
+                </Link>
+              </div>
             </WireframeReveal>
 
           </div>
@@ -140,9 +139,9 @@ const Home = () => {
       {/* --- Contact --- */}
       <section id="contact" className="section" style={{ textAlign: 'center' }}>
         <div className="container">
-          <h3 className="section-title glitch" data-text="COMMUNICATION">COMMUNICATION</h3>
+          <h3 className="section-title glitch" data-text="COMMUNICATION" style={{ margin: '0 auto 40px auto', width: 'fit-content', position: 'static', transform: 'none', display: 'block' }}>COMMUNICATION</h3>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', position: 'relative', zIndex: 20 }}>
-            <a href="mailto:dummy@example.com" className="btn-cyber">
+            <a href="mailto:hishikawa1031@mail.com" className="btn-cyber">
               <Mail size={20} style={{ marginRight: '10px' }} /> MAIL
             </a>
             <a href="https://github.com/yuki1031-hub" target="_blank" rel="noopener noreferrer" className="btn-cyber">

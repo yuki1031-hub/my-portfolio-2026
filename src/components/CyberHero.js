@@ -33,12 +33,11 @@ const CyberHero = () => {
                         animate={{ y: [0, 10, 0] }}
                         transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
                         onClick={() => document.getElementById('works').scrollIntoView({ behavior: 'smooth' })}
-                        style={{ cursor: 'pointer', color: 'var(--neon-yellow)' }}
+                        style={{ cursor: 'pointer', color: '#ffffff' }}
                     >
-                        {/* Pixel Arrow Icon */}
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" style={{ imageRendering: 'pixelated' }}>
-                            <path d="M12 18L12 16L12 14L12 6" stroke="currentColor" strokeWidth="2" strokeLinecap="square" />
-                            <path d="M8 14L10 14L10 16L12 18L14 16L14 14L16 14" fill="currentColor" />
+                        {/* White Downward Triangle */}
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="6,8 18,8 12,18" />
                         </svg>
                     </motion.div>
                 </motion.div>
