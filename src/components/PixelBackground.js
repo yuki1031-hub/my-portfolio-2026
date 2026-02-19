@@ -22,14 +22,22 @@ const PixelBackground = () => {
                 this.vx = (Math.random() - 0.5) * 0.4;
                 this.vy = (Math.random() - 0.5) * 0.4;
 
-                this.baseRadius = 250 + Math.random() * 300;
+                // Responsive Radius
+                const minDimension = Math.min(width, height);
+                const isMobile = width < 768;
+
+                // On mobile, use smaller relative size
+                const baseSize = isMobile ? minDimension * 0.5 : 250;
+                const variation = isMobile ? minDimension * 0.3 : 300;
+
+                this.baseRadius = baseSize + Math.random() * variation;
                 this.radius = this.baseRadius;
 
                 this.morphSpeed = 0.005 + Math.random() * 0.01;
                 this.morphOffset = Math.random() * 100;
 
                 this.baseAlpha = 0.2 + Math.random() * 0.3;
-                this.currentAlpha = this.baseAlpha; // For interaction
+                this.currentAlpha = this.baseAlpha;
                 this.hueOffset = Math.random() * 80 - 40;
 
                 this.shapePoints = [];
@@ -58,32 +66,28 @@ const PixelBackground = () => {
 
                 this.radius = this.baseRadius + Math.sin(time * this.morphSpeed + this.morphOffset) * 30;
 
-                // Mouse interaction
+                // Interaction (Mouse & Touch)
                 const dx = this.x - mouse.x;
                 const dy = this.y - mouse.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                const interactRadius = 400;
+                const interactRadius = width < 768 ? 250 : 400; // Smaller trigger on mobile
 
                 if (dist < interactRadius) {
                     const force = (interactRadius - dist) / interactRadius;
 
-                    // 1. Repulsion (Move away)
-                    this.vx += (dx / dist) * force * 0.5; // Stronger push
+                    this.vx += (dx / dist) * force * 0.5;
                     this.vy += (dy / dist) * force * 0.5;
 
-                    // 2. Brightness Boost (Highlight)
                     this.currentAlpha = Math.min(this.baseAlpha + force * 0.4, 0.8);
 
-                    // 3. Spin faster
                     this.rotation += force * 0.05;
                 } else {
-                    // Return to base alpha
                     if (this.currentAlpha > this.baseAlpha) {
                         this.currentAlpha -= 0.01;
                     }
                 }
 
-                const buffer = 400;
+                const buffer = this.radius * 1.5;
                 if (this.x < -buffer) this.x = width + buffer;
                 if (this.x > width + buffer) this.x = -buffer;
                 if (this.y < -buffer) this.y = height + buffer;
@@ -100,7 +104,6 @@ const PixelBackground = () => {
                 const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius);
                 const currentHue = (hue + this.hueOffset) % 360;
 
-                // Use currentAlpha which reacts to mouse
                 gradient.addColorStop(0, `hsla(${currentHue}, 40%, 60%, ${this.currentAlpha})`);
                 gradient.addColorStop(0.5, `hsla(${currentHue}, 30%, 50%, ${this.currentAlpha * 0.5})`);
                 gradient.addColorStop(1, `hsla(${currentHue}, 30%, 10%, 0)`);
@@ -137,7 +140,10 @@ const PixelBackground = () => {
             height = canvas.height = window.innerHeight;
 
             particles = [];
-            for (let i = 0; i < 35; i++) {
+            // Responsive count: Fewer particles on mobile for performance and clarity
+            const particleCount = width < 768 ? 18 : 35;
+
+            for (let i = 0; i < particleCount; i++) {
                 particles.push(new NebulaParticle());
             }
         };
@@ -148,7 +154,6 @@ const PixelBackground = () => {
 
             hue = (hue + 0.1) % 360;
 
-            // Decaying mouse velocity for other effects if needed
             mouseVel.x *= 0.95;
             mouseVel.y *= 0.95;
 
@@ -178,8 +183,24 @@ const PixelBackground = () => {
             mouse.y = currentY;
         };
 
+        const handleTouchMove = (e) => {
+            if (e.touches.length > 0) {
+                const rect = canvas.getBoundingClientRect();
+                const touch = e.touches[0];
+                const currentX = touch.clientX - rect.left;
+                const currentY = touch.clientY - rect.top;
+
+                mouseVel.x = currentX - mouse.x;
+                mouseVel.y = currentY - mouse.y;
+                mouse.x = currentX;
+                mouse.y = currentY;
+            }
+        };
+
         window.addEventListener('resize', handleResize);
         window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('touchmove', handleTouchMove, { passive: true });
+        window.addEventListener('touchstart', handleTouchMove, { passive: true });
 
         init();
         animate(0);
@@ -187,6 +208,8 @@ const PixelBackground = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchstart', handleTouchMove);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
