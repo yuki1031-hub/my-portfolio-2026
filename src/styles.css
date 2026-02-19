@@ -1,24 +1,7 @@
 /* =========================================
-   Cyberpunk & Pixel Art Portfolio Theme
+   Global Reset & Base Styles (Restored for Demos)
    ========================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap');
-
-:root {
-  /* Colors */
-  --bg-dark: #050505;
-  --bg-panel: #0a0a0a;
-  --neon-pink: #ff0055;
-  --neon-cyan: #00ffff;
-  --neon-yellow: #faff00;
-  --text-main: #e0e0e0;
-  --text-dim: #888888;
-  --grid-line: rgba(0, 255, 255, 0.1);
-
-  /* Fonts */
-  --font-pixel: 'Press Start 2P', cursive;
-  --font-mono: 'Share Tech Mono', monospace;
-}
 
 * {
   box-sizing: border-box;
@@ -27,11 +10,11 @@
 }
 
 body {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-  font-family: var(--font-mono);
-  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333;
   line-height: 1.6;
+  background-color: #f9fafb;
+  /* Default light background for demos */
 }
 
 a {
@@ -45,11 +28,49 @@ ul {
 }
 
 /* =========================================
-   Global Effects
+   Cyberpunk Theme Scope
+   ========================================= */
+.cyberpunk-theme {
+  /* Colors - Modern Tech Palette */
+  --bg-dark: #0a0b1e;
+  /* Deep Blue */
+  --bg-panel: #111225;
+  /* Slightly lighter blue */
+  --neon-pink: #d946ef;
+  /* Fuchsia/Magenta */
+  --neon-cyan: #0ea5e9;
+  /* Sky Blue (Muted Cyan) */
+  --neon-yellow: #fbbf24;
+  /* Amber */
+  --text-main: #e2e8f0;
+  /* Slate 200 */
+  --text-dim: #94a3b8;
+  /* Slate 400 */
+  --grid-line: rgba(14, 165, 233, 0.1);
+
+  /* Fonts */
+  --font-pixel: 'Press Start 2P', cursive;
+  --font-mono: 'Share Tech Mono', monospace;
+
+  /* Base override for theme */
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.cyberpunk-theme button {
+  font-family: var(--font-mono);
+}
+
+/* =========================================
+   Global Effects (Scoped)
    ========================================= */
 
 /* CRT Scanline Overlay */
-.scanlines {
+.cyberpunk-theme .scanlines {
   position: fixed;
   top: 0;
   left: 0;
@@ -63,11 +84,12 @@ ul {
   background-size: 100% 4px;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.6;
+  opacity: 0.4;
+  /* Slightly toned down */
 }
 
 /* Cyber Grid Background */
-.cyber-grid {
+.cyberpunk-theme .cyber-grid {
   position: fixed;
   top: 0;
   left: 0;
@@ -176,10 +198,10 @@ ul {
 }
 
 /* =========================================
-   Layout & Components
+   Layout & Components (Scoped)
    ========================================= */
 
-.container {
+.cyberpunk-theme .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -188,11 +210,12 @@ ul {
 }
 
 /* Header */
-.header {
+.cyberpunk-theme .header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(10, 10, 10, 0.9);
+  background: rgba(10, 11, 30, 0.9);
+  /* Updated to match new bg */
   backdrop-filter: blur(5px);
   border-bottom: 2px solid var(--neon-cyan);
   z-index: 1000;
@@ -201,14 +224,14 @@ ul {
   align-items: center;
 }
 
-.logo {
+.cyberpunk-theme .logo {
   font-family: var(--font-pixel);
   font-size: 1.2rem;
   color: var(--neon-yellow);
   text-shadow: 2px 2px var(--neon-pink);
 }
 
-.nav-menu button {
+.cyberpunk-theme .nav-menu button {
   background: none;
   border: 1px solid transparent;
   color: var(--text-main);
@@ -220,20 +243,20 @@ ul {
   transition: all 0.2s;
 }
 
-.nav-menu button:hover {
+.cyberpunk-theme .nav-menu button:hover {
   background: var(--neon-pink);
-  color: #000;
+  color: #fff;
   box-shadow: 3px 3px 0 var(--neon-cyan);
   border-color: var(--neon-cyan);
 }
 
 /* Sections */
-.section {
+.cyberpunk-theme .section {
   padding: 100px 0;
   position: relative;
 }
 
-.section-title {
+.cyberpunk-theme .section-title {
   font-family: var(--font-pixel);
   font-size: 2rem;
   text-align: center;
@@ -245,7 +268,7 @@ ul {
   transform: translateX(-50%);
 }
 
-.section-title::after {
+.cyberpunk-theme .section-title::after {
   content: '';
   display: block;
   width: 100%;
@@ -255,9 +278,8 @@ ul {
   box-shadow: 0 0 10px var(--neon-pink);
 }
 
-
 /* Cards (Pixel Border) */
-.cyber-card {
+.cyberpunk-theme .cyber-card {
   background: var(--bg-panel);
   border: 2px solid var(--text-dim);
   padding: 24px;
@@ -266,14 +288,14 @@ ul {
   transition: transform 0.2s;
 }
 
-.cyber-card:hover {
+.cyberpunk-theme .cyber-card:hover {
   border-color: var(--neon-cyan);
   box-shadow: 5px 5px 0 0 var(--neon-cyan);
   transform: translate(-2px, -2px);
 }
 
 /* Buttons */
-.btn-cyber {
+.cyberpunk-theme .btn-cyber {
   background: transparent;
   border: 2px solid var(--neon-yellow);
   color: var(--neon-yellow);
@@ -283,9 +305,11 @@ ul {
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 3px 3px 0 var(--neon-pink);
+  display: inline-flex;
+  align-items: center;
 }
 
-.btn-cyber:hover {
+.cyberpunk-theme .btn-cyber:hover {
   background: var(--neon-yellow);
   color: #000;
   box-shadow: 1px 1px 0 var(--neon-pink);
@@ -293,16 +317,16 @@ ul {
 }
 
 /* Hero Section */
-.hero-section {
+.cyberpunk-theme .hero-section {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: radial-gradient(circle at center, rgba(8, 20, 40, 0.8) 0%, rgba(5, 5, 5, 1) 70%);
+  background: radial-gradient(circle at center, rgba(14, 165, 233, 0.1) 0%, rgba(10, 11, 30, 1) 70%);
 }
 
-.hero-title {
+.cyberpunk-theme .hero-title {
   font-family: var(--font-pixel);
   font-size: 3rem;
   line-height: 1.4;
@@ -310,18 +334,17 @@ ul {
   color: #fff;
 }
 
-.hero-subtitle {
+.cyberpunk-theme .hero-subtitle {
   font-size: 1.2rem;
   color: var(--neon-cyan);
   margin-bottom: 40px;
 }
 
-/* Terminal Card */
-.retro-monitor {
+/* Terminal & Retro Monitor */
+.cyberpunk-theme .retro-monitor {
   background: #000;
   border: 20px solid #2a2a2a;
   border-bottom-width: 30px;
-  /* Thicker bottom bezel */
   border-radius: 10px;
   box-shadow:
     0 0 0 2px #111,
@@ -331,7 +354,7 @@ ul {
   overflow: hidden;
 }
 
-.monitor-brand {
+.cyberpunk-theme .monitor-brand {
   position: absolute;
   bottom: -22px;
   left: 50%;
@@ -344,7 +367,7 @@ ul {
   z-index: 10;
 }
 
-.monitor-power {
+.cyberpunk-theme .monitor-power {
   position: absolute;
   bottom: -20px;
   right: 15px;
@@ -356,47 +379,290 @@ ul {
   z-index: 10;
 }
 
-.terminal-card {
+.cyberpunk-theme .terminal-card {
   background: #0d0d0d;
-  /* Slightly lighter than pure black for contrast */
   font-family: var(--font-mono);
   height: 100%;
   min-height: 250px;
 }
 
-.terminal-header {
+.cyberpunk-theme .terminal-header {
   background: #333;
   padding: 5px 10px;
   display: flex;
   gap: 5px;
   margin-bottom: 10px;
-  /* Space between header and body */
 }
 
-.terminal-dot {
+.cyberpunk-theme .terminal-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: #555;
 }
 
-.terminal-dot.red {
+.cyberpunk-theme .terminal-dot.red {
   background: #ff5f56;
 }
 
-.terminal-dot.yellow {
+.cyberpunk-theme .terminal-dot.yellow {
   background: #ffbd2e;
 }
 
-.terminal-dot.green {
+.cyberpunk-theme .terminal-dot.green {
   background: #27c93f;
 }
 
-.terminal-body {
+.cyberpunk-theme .terminal-body {
   padding: 20px;
   color: #00ff00;
   font-size: 0.9rem;
   min-height: 200px;
+}
+
+/* =========================================
+   Modal (Fixed for User Request)
+   ========================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 10000;
+  /* High z-index */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  position: relative;
+  background: #000;
+  border: 2px solid var(--neon-pink);
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 90vw;
+  max-height: 90vh;
+  /* Keep it within viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 30px rgba(217, 70, 239, 0.3);
+}
+
+.modal-content img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 80vh;
+  /* Leave room for text */
+  object-fit: contain;
+}
+
+.modal-close-msg {
+  color: var(--neon-pink);
+  margin-top: 15px;
+  font-family: var(--font-pixel);
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+/* =========================================
+   Helper for Demo Pages (Optional)
+   ========================================= */
+/* Re-applying some basic resets if needed for Diagnosis/AdChatbot 
+   assuming they use standard HTML tags */
+.diagnosis-app-wrapper,
+.ad-screen-wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333;
+}
+
+/* =========================================
+   Helper for Demo Pages (Restored)
+   ========================================= */
+
+.diagnosis-app-wrapper,
+.ad-screen-wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.diagnosis-app-wrapper {
+  background-color: #8da4ce;
+}
+
+.ad-screen-wrapper {
+  background-color: #7494c0;
+}
+
+/* Diagnosis Styles */
+.diagnosis-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.question-screen {
+  animation: popIn 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.line-icon {
+  font-size: 40px;
+  margin-bottom: -10px;
+}
+
+.speech-bubble {
+  background-color: white;
+  padding: 15px;
+  border-radius: 15px;
+  border-top-left-radius: 0;
+  position: relative;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  max-width: 80%;
+}
+
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  border-top: 10px solid white;
+  border-left: 10px solid transparent;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.question-text {
+  font-size: 16px;
+  margin: 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.main-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-left: 50px;
+  max-width: 80%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  animation: popIn 0.4s ease-out;
+}
+
+.diagnosis-option-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #ffffff;
+  color: #007bff;
+  border: none;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: center;
+}
+
+.diagnosis-option-btn:last-child {
+  border-bottom: none;
+}
+
+.diagnosis-option-btn:hover {
+  background-color: #f2f7fd;
+}
+
+.result-screen {
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  animation: popIn 0.5s ease-out;
+  margin-top: 50px;
+}
+
+.start-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px;
+  background-color: #06c755;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
+}
+
+.restart-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #1c52e7;
+  color: #fdfdfd;
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.result-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* AdChatbot Styles */
+.chat-container {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.chat-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
 }
 
 .bot-icon {

@@ -27,10 +27,20 @@ const CyberHero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1, duration: 0.5 }}
+                    style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}
                 >
-                    <button className="btn-cyber" onClick={() => document.getElementById('works').scrollIntoView({ behavior: 'smooth' })}>
-                        INITIALIZE SYSTEM
-                    </button>
+                    <motion.div
+                        animate={{ y: [0, 10, 0] }}
+                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                        onClick={() => document.getElementById('works').scrollIntoView({ behavior: 'smooth' })}
+                        style={{ cursor: 'pointer', color: 'var(--neon-yellow)' }}
+                    >
+                        {/* Pixel Arrow Icon */}
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" style={{ imageRendering: 'pixelated' }}>
+                            <path d="M12 18L12 16L12 14L12 6" stroke="currentColor" strokeWidth="2" strokeLinecap="square" />
+                            <path d="M8 14L10 14L10 16L12 18L14 16L14 14L16 14" fill="currentColor" />
+                        </svg>
+                    </motion.div>
                 </motion.div>
             </div>
         </section>

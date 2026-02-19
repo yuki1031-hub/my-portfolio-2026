@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles.css';
-import { Menu } from 'lucide-react';
+import '../styles.css';
 
 const CyberHeader = ({ scrollToSection }) => {
     return (

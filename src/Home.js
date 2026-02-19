@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, Mail, ExternalLink, Cpu, Terminal, Database, Code } from 'lucide-react';
+import { Github, Mail, ExternalLink, Cpu, Database, Code } from 'lucide-react';
 import './styles.css';
 
 import CyberLayout from './components/CyberLayout';
@@ -141,8 +141,8 @@ const Home = () => {
       <section id="contact" className="section" style={{ textAlign: 'center' }}>
         <div className="container">
           <h3 className="section-title glitch" data-text="COMMUNICATION">COMMUNICATION</h3>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '30px' }}>
-            <a href="mailto:hishikawa1031@gmail.com" className="btn-cyber">
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', position: 'relative', zIndex: 20 }}>
+            <a href="mailto:dummy@example.com" className="btn-cyber">
               <Mail size={20} style={{ marginRight: '10px' }} /> MAIL
             </a>
             <a href="https://github.com/yuki1031-hub" target="_blank" rel="noopener noreferrer" className="btn-cyber">

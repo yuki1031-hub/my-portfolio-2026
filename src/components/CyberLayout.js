@@ -14,7 +14,7 @@ const CyberLayout = ({ children }) => {
     const gridY = useTransform(scrollY, [0, 5000], [0, 500]);
 
     return (
-        <div className="cyber-layout">
+        <div className="cyber-layout cyberpunk-theme">
             <motion.div
                 className="scanlines"
                 style={{ pointerEvents: 'none' }}
