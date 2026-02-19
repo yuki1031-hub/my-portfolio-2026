@@ -66,12 +66,15 @@ const CyberHeader = ({ scrollToSection }) => {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                                 gap: '40px',
-                                zIndex: 1500
+                                zIndex: 1500,
+                                padding: '0 20px',
+                                textAlign: 'center'
                             }}
                         >
-                            {['about', 'career', 'works', 'contact'].map((section) => (
+                            {['projects', 'about', 'works', 'contact'].map((section) => (
                                 <motion.button
                                     key={section}
+                                    className="nav-menu-item"
                                     whileHover={{ scale: 1.1, textShadow: "0 0 10px var(--neon-cyan)" }}
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => handleNavClick(section)}
@@ -80,15 +83,14 @@ const CyberHeader = ({ scrollToSection }) => {
                                         border: 'none',
                                         color: '#fff',
                                         fontFamily: 'var(--font-pixel)',
-                                        fontSize: '1.5rem',
                                         cursor: 'pointer',
                                         textTransform: 'uppercase',
                                         letterSpacing: '2px'
                                     }}
                                 >
-                                    {section === 'career' ? 'LOG.BG' :
-                                        section === 'works' ? 'EXE.WORKS' :
-                                            section === 'contact' ? 'COM.LINK' : 'DATA.ABOUT'}
+                                    {section === 'projects' ? 'LATEST_PROJECT' :
+                                        section === 'works' ? 'DEPLOYED_PROJECTS' :
+                                            section === 'contact' ? 'COMMUNICATION' : 'USER_DATA'}
                                 </motion.button>
                             ))}
                         </motion.nav>

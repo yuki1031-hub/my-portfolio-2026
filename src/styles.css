@@ -227,7 +227,7 @@ ul {
 .cyberpunk-theme .logo {
   font-family: var(--font-pixel);
   font-size: 1.2rem;
-  color: var(--neon-yellow);
+  color: var(--neon-blue);
   text-shadow: 2px 2px var(--neon-pink);
 }
 
@@ -808,7 +808,25 @@ ul {
 /* =========================================
    Responsive Adjustments
    ========================================= */
+.nav-menu-item {
+  font-size: 1.5rem;
+  /* PC default */
+}
+
+.mobile-only {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .nav-menu-item {
+    font-size: 1.0rem;
+    /* Mobile size */
+  }
+
+  .mobile-only {
+    display: inline;
+  }
+
   .cyberpunk-theme .hero-title {
     font-size: 1.8rem;
     line-height: 1.3;
@@ -822,8 +840,18 @@ ul {
   }
 
   .cyberpunk-theme .section-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    /* General section titles */
     margin-bottom: 40px;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .deployed-title {
+    font-size: 1.2rem !important;
   }
 
   .cyberpunk-theme .glitch::before,

@@ -34,7 +34,7 @@ const Home = () => {
             className="cyber-card"
             style={{ display: 'flex', gap: '40px', flexWrap: 'wrap' }}
           >
-            <div style={{ flex: 1, minWidth: '300px' }}>
+            <div style={{ flex: 1, minWidth: '250px' }}>
               <h4 style={{ color: 'var(--neon-pink)', fontSize: '1.5rem', marginBottom: '10px' }}>
                 AI-Powered Prototyper
               </h4>
@@ -42,13 +42,13 @@ const Home = () => {
                 Currently developing multiple web applications and automation tools by deeply integrating AI into the workflow.
                 Focusing on rapid prototyping and transforming ideas into working software through human-AI collaboration.
               </p>
-              <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+              <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', flexWrap: 'wrap' }}>
                 <span className="btn-cyber" style={{ fontSize: '0.7rem' }}>Gemini 1.5 Pro</span>
                 <span className="btn-cyber" style={{ fontSize: '0.7rem' }}>Google AI Studio</span>
                 <span className="btn-cyber" style={{ fontSize: '0.7rem' }}>Antigravity</span>
               </div>
             </div>
-            <div style={{ flex: 1, minWidth: '300px' }}>
+            <div style={{ flex: 1, minWidth: '250px' }}>
               <ProjectTerminal />
             </div>
           </WireframeReveal>
@@ -95,7 +95,7 @@ const Home = () => {
       {/* --- Works --- */}
       <section id="works" className="section">
         <div className="container">
-          <h3 className="section-title glitch" data-text="EXECUTABLES">DEPLOYED_PROJECTS</h3>
+          <h3 className="section-title glitch deployed-title" data-text="EXECUTABLES">DEPLOYED_PROJECTS</h3>
 
           <div className="works-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px' }}>
 

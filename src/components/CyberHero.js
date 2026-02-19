@@ -1,17 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import PixelBackground from './PixelBackground';
 import '../styles.css';
 
 const CyberHero = () => {
     return (
-        <section className="hero-section">
-            <div className="container">
+        <section className="hero-section" style={{ position: 'relative', overflow: 'hidden' }}>
+            <PixelBackground />
+
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h1 className="hero-title glitch" data-text="HISHIKAWA YUKI">HISHIKAWA YUKI</h1>
+                    <h1 className="hero-title glitch" data-text="HISHIKAWA YUKI">HISHIKAWA <br className="mobile-only" />YUKI</h1>
                 </motion.div>
 
                 <motion.p
