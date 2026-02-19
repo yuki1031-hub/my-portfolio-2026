@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import liff from "@line/liff"; 
 import "./styles.css";
 
+// 定数の箱
 const COMMON_OPTIONS = [
   { text: "非常にそう思う ", score: 4 },
   { text: "そう思う ", score: 3 },
@@ -31,6 +32,7 @@ const results = [
   { type: "G", title: "エジソンでした🌈", image: "/image/type-g.png", minScore: 25, maxScore: 28 },
   { type: "H", title: "マリー・アントワネットでした🌈", image: "/image/type-h.png", minScore: 29, maxScore: 999 },
 ];
+// 中身が書き換わる箱
 
 export default function Diagnosis() {
   const [isStarted, setIsStarted] = useState(false);
