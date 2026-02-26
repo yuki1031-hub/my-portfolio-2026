@@ -69,7 +69,6 @@ export default function ShuffleText({ text, duration = 930, delay = 0, className
             clearTimeout(timeout);
             if (rafRef.current) cancelAnimationFrame(rafRef.current);
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
