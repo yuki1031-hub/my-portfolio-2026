@@ -11,7 +11,7 @@
 }
 
 .cell:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.07);
 }
 
 .canvasWrap {
@@ -26,7 +26,7 @@
 }
 
 .label {
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Dot Gothic 16', sans-serif;
   font-size: 0.42rem;
   letter-spacing: 0.05em;
   text-align: center;

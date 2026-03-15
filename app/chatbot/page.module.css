@@ -1,9 +1,9 @@
 .page {
   min-height: 100%;
-  background: #0d0d0d;
-  color: #ddd;
+  background: #9ea87a;
+  color: #111111;
   padding: 20px 24px;
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Dot Gothic 16', sans-serif;
 }
 
 .topBar {
@@ -16,7 +16,7 @@
 .pageTitle {
   font-size: 0.6rem;
   letter-spacing: 0.15em;
-  color: #00ff88;
+  color: #e60073;
   font-weight: normal;
 }
 
@@ -26,11 +26,12 @@
   gap: 20px;
 }
 
+/* グレースケールカード */
 .project {
-  border: 1px solid #1e1e1e;
+  border: 1px solid #bbbbbb;
   border-radius: 6px;
   overflow: hidden;
-  background: #111;
+  background: #e8e8e8;
 }
 
 .projectHeader {
@@ -38,22 +39,22 @@
   align-items: center;
   gap: 12px;
   padding: 10px 16px;
-  background: #161616;
-  border-bottom: 1px solid #1e1e1e;
+  background: #d8d8d8;
+  border-bottom: 1px solid #bbbbbb;
   flex-wrap: wrap;
 }
 
 .projectName {
   font-size: 0.7rem;
-  color: #eee;
+  color: #111111;
   letter-spacing: 0.08em;
   line-height: 1.6;
 }
 
 .tool {
   font-size: 0.4rem;
-  color: #06c755;
-  border: 1px solid #06c755;
+  color: #e60073;
+  border: 1px solid #e60073;
   padding: 3px 8px;
   border-radius: 3px;
   letter-spacing: 0.08em;
@@ -66,7 +67,6 @@
   padding: 16px;
 }
 
-/* Thumbnail button */
 .imgBtn {
   background: none;
   border: none;
@@ -93,7 +93,7 @@
 
 .desc {
   font-size: 0.6rem;
-  color: #888;
+  color: #555555;
   line-height: 2;
   letter-spacing: 0.04em;
 }
@@ -107,7 +107,7 @@
 
 .features li {
   font-size: 0.5rem;
-  color: #aaa;
+  color: #333333;
   letter-spacing: 0.04em;
   line-height: 1.8;
 }
@@ -117,7 +117,7 @@
   position: fixed;
   inset: 0;
   z-index: 9990;
-  background: rgba(0, 0, 0, 0.88);
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,8 +126,8 @@
 }
 
 .modalInner {
-  background: #111;
-  border: 1px solid #333;
+  background: #e8e8e8;
+  border: 1px solid #bbbbbb;
   border-radius: 8px;
   padding: 24px;
   max-width: 320px;
@@ -147,11 +147,11 @@
 }
 
 .modalClose {
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Dot Gothic 16', sans-serif;
   font-size: 0.45rem;
-  color: #888;
+  color: #333333;
   background: transparent;
-  border: 1px solid #333;
+  border: 1px solid #aaaaaa;
   padding: 8px 16px;
   cursor: pointer;
   letter-spacing: 0.1em;
@@ -159,8 +159,8 @@
 }
 
 .modalClose:hover {
-  color: #fff;
-  border-color: #666;
+  color: #e60073;
+  border-color: #e60073;
 }
 
 @media (max-width: 520px) {

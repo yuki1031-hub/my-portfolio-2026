@@ -33,7 +33,7 @@ export default function FloatingDots() {
       for (const dot of dots) {
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${dot.opacity})`;
+        ctx.fillStyle = `rgba(0,0,0,${dot.opacity * 0.5})`;
         ctx.fill();
         dot.y += dot.speed;
         if (dot.y > canvas.height + dot.r) {

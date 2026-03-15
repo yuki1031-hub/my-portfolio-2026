@@ -2,11 +2,9 @@
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  /* ブラウン管ベージュ系の背景 */
-  background: #b8b2a4;
-  color: #2a2010;
+  background: #9ea87a;
+  color: #111111;
   padding: 20px 24px 16px;
-  /* 画面全体のチカチカ */
   animation: homeFlicker 7s infinite;
 }
 
@@ -18,28 +16,6 @@
   96% { opacity: 1; }
   98% { opacity: 0.95; }
   99% { opacity: 1; }
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 12px;
-}
-
-.siteTitle {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  color: #2a200a;
-  font-weight: normal;
-  text-shadow:
-    1px 1px 0 rgba(255, 255, 255, 0.4),
-    0 0 16px rgba(50, 30, 0, 0.2);
-}
-
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #9a9080 20%, #9a9080 80%, transparent);
-  margin-top: 12px;
 }
 
 .main {
@@ -59,10 +35,10 @@
 
 .footer {
   text-align: center;
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Dot Gothic 16', sans-serif;
   font-size: 0.4rem;
-  color: #e8e2d8;
+  color: #444444;
   letter-spacing: 0.08em;
   padding-top: 10px;
-  border-top: 1px solid #b8b0a0;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
 }

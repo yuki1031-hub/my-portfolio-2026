@@ -1,18 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+@font-face {
+  font-family: 'Dot Gothic 16';
+  src: url('/fonts/DotGothic16-Regular.ttf') format('truetype');
+}
+
 html {
-  font-size: 24px; /* 1.5x base: 全remフォントサイズが1.5倍になる */
+  font-size: 24px;
 }
 
 html, body {
-  font-family: 'Press Start 2P', monospace;
-  background-color: #b0ada0;
+  font-family: 'Dot Gothic 16', sans-serif;
+  font-weight: bold;
+  background-color: #9ea87a;
   min-height: 100vh;
   height: 100%;
 }
@@ -31,8 +35,8 @@ body::after {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 0, 0, 0.05) 2px,
-    rgba(0, 0, 0, 0.05) 4px
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 4px
   );
   pointer-events: none;
   z-index: 9998;

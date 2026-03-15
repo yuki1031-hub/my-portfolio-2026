@@ -1,9 +1,9 @@
 .page {
   min-height: 100%;
-  background: #0d0d0d;
-  color: #ddd;
+  background: #9ea87a;
+  color: #111111;
   padding: 24px 28px 32px;
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Dot Gothic 16', sans-serif;
   display: flex;
   flex-direction: column;
 }
@@ -18,11 +18,10 @@
 .pageTitle {
   font-size: 0.65rem;
   letter-spacing: 0.25em;
-  color: #ff8800;
+  color: #e60073;
   font-weight: normal;
 }
 
-/* AWGE style form */
 .form {
   display: flex;
   flex-direction: column;
@@ -32,11 +31,11 @@
 }
 
 .field {
-  border-top: 1px solid #2a2a2a;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .field:last-of-type {
-  border-bottom: 1px solid #2a2a2a;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .input {
@@ -44,8 +43,8 @@
   background: transparent;
   border: none;
   outline: none;
-  color: #fff;
-  font-family: 'Press Start 2P', monospace;
+  color: #111111;
+  font-family: 'Dot Gothic 16', sans-serif;
   font-size: 0.5rem;
   padding: 16px 4px;
   line-height: 1.8;
@@ -54,17 +53,17 @@
 }
 
 .input::placeholder {
-  color: #ff2222;
+  color: #e60073;
   opacity: 1;
 }
 
 .inputOrange::placeholder {
-  color: #ff8800;
+  color: #3b3b9c;
   opacity: 1;
 }
 
 .inputYellow::placeholder {
-  color: #ffdd00;
+  color: #e60073;
   opacity: 1;
 }
 
@@ -76,12 +75,12 @@
 .sendBtn {
   margin-top: 28px;
   align-self: flex-start;
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Dot Gothic 16', sans-serif;
   font-size: 0.5rem;
   letter-spacing: 0.1em;
-  color: #fff;
-  background: #000;
-  border: 3px solid #fff;
+  color: #111111;
+  background: transparent;
+  border: 3px solid #111111;
   padding: 12px 20px;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
@@ -89,8 +88,8 @@
 }
 
 .sendBtn:hover:not(:disabled) {
-  background: #fff;
-  color: #000;
+  background: #111111;
+  color: #9ea87a;
 }
 
 .sendBtn:disabled {
@@ -104,12 +103,12 @@
   gap: 16px;
   padding: 40px 0;
   font-size: 0.65rem;
-  color: #00ff88;
+  color: #e60073;
   letter-spacing: 0.1em;
   line-height: 2;
 }
 
 .sentSub {
   font-size: 0.45rem;
-  color: #888;
+  color: #444444;
 }

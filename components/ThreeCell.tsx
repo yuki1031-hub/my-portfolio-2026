@@ -13,16 +13,17 @@ interface Props {
   labelColor: string;
   href: string;
   onNavigate: (href: string) => void;
+  onHover?: (label: string | null) => void;
 }
 
-export default function ThreeCell({ type, label, labelColor, href, onNavigate }: Props) {
+export default function ThreeCell({ type, label, labelColor, href, onNavigate, onHover }: Props) {
   const [hovered, setHovered] = useState(false);
 
   return (
     <div
       className={styles.cell}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => { setHovered(true); onHover?.(label); }}
+      onMouseLeave={() => { setHovered(false); onHover?.(null); }}
       onClick={() => onNavigate(href)}
       role="button"
       tabIndex={0}

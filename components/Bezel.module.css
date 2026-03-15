@@ -1,21 +1,17 @@
 .bezel {
   position: fixed;
   inset: 0;
-  background-color: #c8c4b0;
+  background-color: #c8c8c8;
   display: flex;
   flex-direction: column;
-  /* 上下を1.5倍: 28→42px, 32→48px */
-  padding: 42px 48px 0;
+  /* 上部・左右: 元の2倍 (42→84, 48→96) */
+  padding: 84px 96px 0;
   box-shadow:
-    /* 光源が左上: 上・左エッジを明るく */
-    inset 10px 10px 24px rgba(255, 255, 255, 0.30),
-    /* 下・右エッジを暗く */
-    inset -10px -10px 24px rgba(0, 0, 0, 0.28),
-    /* 内側全体の深み */
-    inset 0 0 50px rgba(0, 0, 0, 0.15),
-    /* エッジ際のカーブ感（複数レイヤー） */
-    inset 4px 4px 10px rgba(255, 255, 255, 0.22),
-    inset -4px -4px 10px rgba(0, 0, 0, 0.22);
+    inset 10px 10px 24px rgba(255, 255, 255, 0.35),
+    inset -10px -10px 24px rgba(0, 0, 0, 0.22),
+    inset 0 0 50px rgba(0, 0, 0, 0.10),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.28),
+    inset -4px -4px 10px rgba(0, 0, 0, 0.18);
 }
 
 .screen {
@@ -25,15 +21,14 @@
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
-  /* 画面が凹んでいる印象 */
   box-shadow:
     inset 0 0 60px rgba(0, 0, 0, 0.9),
     inset 0 4px 16px rgba(0, 0, 0, 0.8),
     inset 4px 0 12px rgba(0, 0, 0, 0.5),
     inset -4px 0 12px rgba(0, 0, 0, 0.5),
     inset 0 -4px 12px rgba(0, 0, 0, 0.4),
-    0 0 0 5px #8a8778,
-    0 0 0 6px #7a7668;
+    0 0 0 5px #aaaaaa,
+    0 0 0 6px #999999;
 }
 
 .screen::-webkit-scrollbar {
@@ -47,27 +42,164 @@
   border-radius: 2px;
 }
 
-.bezelLogo {
-  /* 上下ロゴエリアも1.5倍: 48→72px */
-  height: 72px;
+/* ── ベゼル下部: 元の4倍 (72→288px) ── */
+.bezelBottom {
+  height: 288px;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 24px 18px;
+  flex-shrink: 0;
+  user-select: none;
+  gap: 12px;
+}
+
+/* ロゴ行 */
+.bezelHeader {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.55rem;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.bezelLogo {
+  font-family: 'Dot Gothic 16', sans-serif;
+  font-size: 0.6rem;
   font-weight: bold;
   font-style: italic;
-  color: #6a6658;
+  color: #3b3b9c;
   letter-spacing: 0.2em;
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
-  user-select: none;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.dotMatrix {
+  font-family: 'Dot Gothic 16', sans-serif;
+  font-size: 0.26rem;
+  color: #aaaaaa;
+  letter-spacing: 0.10em;
+}
+
+/* コントロール行 */
+.controls {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+/* 十字キー */
+.dpad {
+  position: relative;
+  width: 80px;
+  height: 80px;
   flex-shrink: 0;
 }
 
-.mobileWrapper {
-  min-height: 100vh;
-  background: #b0ada0;
+.dpad::before {
+  content: '';
+  position: absolute;
   width: 100%;
-  position: relative;
-  overflow-x: hidden;
+  height: 33.33%;
+  top: 33.33%;
+  background: #888888;
+  border-radius: 3px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), inset 0 -1px 2px rgba(255,255,255,0.2);
+}
+
+.dpad::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 33.33%;
+  left: 33.33%;
+  background: #888888;
+  border-radius: 3px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), inset 0 -1px 2px rgba(255,255,255,0.2);
+}
+
+/* 中央ボタン群 */
+.centerControls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.smallBtns {
+  display: flex;
+  gap: 14px;
+}
+
+.smallBtn {
+  width: 44px;
+  height: 12px;
+  background: #999999;
+  border-radius: 6px;
+  font-family: 'Dot Gothic 16', sans-serif;
+  font-size: 0.22rem;
+  color: #666666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.05em;
+  transform: rotate(-10deg);
+  box-shadow: 0 2px 3px rgba(0,0,0,0.25);
+}
+
+/* A/B ボタン */
+.buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.btnCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #e60073;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Dot Gothic 16', sans-serif;
+  font-size: 0.4rem;
+  color: #ffffff;
+  box-shadow:
+    0 5px 0 #a0004f,
+    0 0 0 2px rgba(0,0,0,0.15),
+    inset 0 2px 4px rgba(255,255,255,0.25);
+  letter-spacing: 0;
+}
+
+/* ── モバイル ── */
+@media (max-width: 768px) {
+  .bezel {
+    padding: 20px 16px 0;
+  }
+
+  .bezelBottom {
+    height: 160px;
+    padding: 10px 12px 12px;
+    gap: 8px;
+  }
+
+  .dpad {
+    width: 52px;
+    height: 52px;
+  }
+
+  .btnCircle {
+    width: 36px;
+    height: 36px;
+    font-size: 0.35rem;
+    box-shadow: 0 3px 0 #a0004f, 0 0 0 2px rgba(0,0,0,0.15);
+  }
+
+  .smallBtn {
+    width: 36px;
+    height: 10px;
+    font-size: 0.18rem;
+  }
 }

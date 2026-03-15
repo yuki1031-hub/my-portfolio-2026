@@ -1,20 +1,19 @@
+'use client';
+import { useState } from 'react';
 import TVScreen from '../components/TVScreen';
 import NavGrid from '../components/NavGrid';
 import styles from './page.module.css';
 
 export default function Home() {
+  const [hoveredSection, setHoveredSection] = useState<string | null>(null);
+
   return (
     <div className={styles.home}>
-      <header className={styles.header}>
-        <h1 className={styles.siteTitle}>HISHIKAWA.Y</h1>
-        <div className={styles.divider} />
-      </header>
-
       <main className={styles.main}>
         <div className={styles.tvWrap}>
-          <TVScreen />
+          <TVScreen hoveredSection={hoveredSection} />
         </div>
-        <NavGrid />
+        <NavGrid onHover={setHoveredSection} />
       </main>
 
       <footer className={styles.footer}>

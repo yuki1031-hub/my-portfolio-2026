@@ -7,28 +7,13 @@ import styles from './Bezel.module.css';
 const FloatingDots = dynamic(() => import('./FloatingDots'), { ssr: false });
 
 export default function Bezel({ children }: { children: React.ReactNode }) {
-  const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
 
   useEffect(() => {
     setMounted(true);
-    const mq = window.matchMedia('(max-width: 768px)');
-    setIsMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
   }, []);
-
-  if (mounted && isMobile) {
-    return (
-      <div className={styles.mobileWrapper}>
-        {!isHome && <FloatingDots />}
-        {children}
-      </div>
-    );
-  }
 
   return (
     <div className={styles.bezel}>
@@ -36,7 +21,25 @@ export default function Bezel({ children }: { children: React.ReactNode }) {
         {mounted && !isHome && <FloatingDots />}
         {children}
       </div>
-      <div className={styles.bezelLogo}>HSKW</div>
+      <div className={styles.bezelBottom}>
+        <div className={styles.bezelHeader}>
+          <div className={styles.bezelLogo}>HISHIKAWA.Y</div>
+          <div className={styles.dotMatrix}>DOT MATRIX WITH STEREO SOUND</div>
+        </div>
+        <div className={styles.controls}>
+          <div className={styles.dpad} />
+          <div className={styles.centerControls}>
+            <div className={styles.smallBtns}>
+              <div className={styles.smallBtn}>SELECT</div>
+              <div className={styles.smallBtn}>START</div>
+            </div>
+          </div>
+          <div className={styles.buttons}>
+            <div className={styles.btnCircle}>B</div>
+            <div className={styles.btnCircle}>A</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
