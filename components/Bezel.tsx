@@ -17,7 +17,11 @@ export default function Bezel({ children }: { children: React.ReactNode }) {
   }, []);
 
   if (noBezel) {
-    return <>{children}</>;
+    return (
+      <div className={styles.noBezelWrapper}>
+        {children}
+      </div>
+    );
   }
 
   return (
@@ -28,7 +32,7 @@ export default function Bezel({ children }: { children: React.ReactNode }) {
       </div>
       <div className={styles.bezelBottom}>
         <div className={styles.bezelHeader}>
-          <div className={styles.bezelLogo}>HISHIKAWA.Y</div>
+          <div className={styles.bezelLogo}>HSHKW</div>
           <div className={styles.dotMatrix}>DOT MATRIX WITH STEREO SOUND</div>
         </div>
         <div className={styles.controls}>

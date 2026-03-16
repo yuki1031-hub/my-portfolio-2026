@@ -17,7 +17,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <span>© 2026 HISHIKAWA.Y</span>
+        <span>© 2026 HISHKW</span>
       </footer>
     </div>
   );

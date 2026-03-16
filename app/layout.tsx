@@ -3,8 +3,8 @@ import './globals.css';
 import Bezel from '../components/Bezel';
 
 export const metadata: Metadata = {
-  title: 'HISHIKAWA.Y',
-  description: 'Portfolio of Hishikawa Yuki — LINE chatbot, LP design, freelance engineer',
+  title: 'HSHKW',
+  description: 'Portfolio of Hihkw — LINE chatbot, LP design, freelance engineer',
 };
 
 export default function RootLayout({
