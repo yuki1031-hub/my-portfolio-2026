@@ -1,50 +1,64 @@
-import BackButton from '../../components/BackButton';
+import SiteHeader from '../../components/SiteHeader';
 import styles from './page.module.css';
+import AboutClient from './AboutClient';
 
 export default function About() {
   return (
-    <div className={styles.page}>
-      <div className={styles.topBar}>
-        <BackButton />
-        <h2 className={styles.pageTitle}>// ABOUT</h2>
-      </div>
-      <div className={styles.content}>
+    <div className={`${styles.page} pageEnter`}>
+      <SiteHeader />
+
+      <main className={styles.main}>
+        {/* ─── ヒーロー画像 ─── */}
+        <img
+          src="/images/about.JPG"
+          alt="プロフィール"
+          className={styles.heroImg}
+        />
+
+        {/* ─── WHO AM I ─── */}
         <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>WHO AM I</h3>
           <p className={styles.text}>
-            LINE構築・Lステップ実装・LP制作を中心に活動しています。
-            クライアントのビジネスゴールを技術で実現することを得意としています。
+            LINEチャットボット実装・Lステップ・LP制作を中心に活動するフリーランスエンジニアです。
           </p>
         </section>
 
+        {/* ─── CAREER ─── */}
         <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>CAREER</h3>
           <div className={styles.timeline}>
-            <div className={styles.item}>
-              <div className={styles.date}>〜2024</div>
-              <div className={styles.detail}>
-                <div className={styles.itemTitle}>チャットコマース系ITベンチャー</div>
-                <div className={styles.itemDesc}>LINEチャットボット実装・シナリオ設計・クライアント対応</div>
+             <div className={styles.timelineItem}>
+              <div className={styles.timelineDate}>2026〜</div>
+              <div className={styles.timelineDetail}>
+                <div className={styles.timelineTitle}>フリーランス独立</div>
+                <p className={styles.timelineDesc}>
+                  LINE構築・チャットボット制作をフリーランスとして提供中。
+                </p>
               </div>
             </div>
-            <div className={styles.item}>
-              <div className={styles.date}>2026〜</div>
-              <div className={styles.detail}>
-                <div className={styles.itemTitle}>フリーランス独立</div>
-                <div className={styles.itemDesc}>LINE構築・LP制作・Webサイト開発をフリーランスとして提供中</div>
+             <div className={styles.timelineItem}>
+              <div className={styles.timelineDate}>〜2024</div>
+              <div className={styles.timelineDetail}>
+                <div className={styles.timelineTitle}>チャットコマース系ITベンチャー</div>
+                <p className={styles.timelineDesc}>
+                  LINEチャットボット実装
+                </p>
               </div>
             </div>
+           
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineDate}>2017〜2024</div>
+              <div className={styles.timelineDetail}>
+                <div className={styles.timelineTitle}>アサヒ飲料株式会社</div>
+                <p className={styles.timelineDesc}>
+                  プロジェクトオーナーとして新商品の全国展開
+                </p>
+              </div>
+            </div>
+           
           </div>
         </section>
+      </main>
 
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>PHILOSOPHY</h3>
-          <p className={styles.text}>
-            技術は手段。クライアントのビジネス課題を理解し、
-            最適なソリューションを一緒に考え、実装します。
-          </p>
-        </section>
-      </div>
+      <AboutClient />
     </div>
   );
 }

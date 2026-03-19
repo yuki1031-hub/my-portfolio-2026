@@ -1,73 +1,84 @@
 'use client';
 import { useState } from 'react';
-import BackButton from '../../components/BackButton';
+import { useRouter } from 'next/navigation';
+import { runPageTransition } from '../../components/pageTransition';
+import SiteHeader from '../../components/SiteHeader';
 import styles from './page.module.css';
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSending(true);
-    // 実際の送信処理に差し替え可能（Formspree等）
     await new Promise((r) => setTimeout(r, 800));
     setSent(true);
     setSending(false);
   };
 
-  return (
-    <div className={styles.page}>
-      <div className={styles.topBar}>
-        <BackButton />
-        <h2 className={styles.pageTitle}>CONTACT</h2>
-      </div>
+  const handleBack = async () => {
+    await runPageTransition();
+    router.push('/');
+  };
 
-      {sent ? (
-        <div className={styles.sentMsg}>
-          <p>MESSAGE SENT.</p>
-          <p className={styles.sentSub}>Thank you. I will reply soon.</p>
-        </div>
-      ) : (
-        <form className={styles.form} onSubmit={handleSubmit} noValidate>
-          <div className={styles.field}>
-            <input
-              type="email"
-              name="email"
-              className={styles.input}
-              placeholder="Email"
-              required
-              autoComplete="email"
-              data-placeholder-color="red"
-            />
+  return (
+    <div className={`${styles.page} pageEnter`}>
+      <SiteHeader />
+
+      <main className={styles.main}>
+        <h1 className={styles.pageTitle}>CONTACT</h1>
+
+        {sent ? (
+          <div className={styles.sentMsg}>
+            <p>MESSAGE SENT.</p>
+            <p className={styles.sentSub}>Thank you. I will reply soon.</p>
           </div>
-          <div className={styles.field}>
-            <input
-              type="text"
-              name="subject"
-              className={`${styles.input} ${styles.inputOrange}`}
-              placeholder="Subject"
-              required
-            />
-          </div>
-          <div className={styles.field}>
-            <textarea
-              name="message"
-              className={`${styles.input} ${styles.textarea} ${styles.inputYellow}`}
-              placeholder="Message"
-              rows={6}
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className={styles.sendBtn}
-            disabled={sending}
-          >
-            {sending ? 'SENDING...' : 'SEND MESSAGE'}
-          </button>
-        </form>
-      )}
+        ) : (
+          <form className={styles.form} onSubmit={handleSubmit} noValidate>
+            <div className={styles.field}>
+              <label className={styles.label}>Email</label>
+              <input
+                type="email"
+                name="email"
+                className={styles.input}
+                required
+                autoComplete="email"
+              />
+            </div>
+            <div className={styles.field}>
+              <label className={styles.label}>Subject</label>
+              <input
+                type="text"
+                name="subject"
+                className={styles.input}
+                required
+              />
+            </div>
+            <div className={styles.field}>
+              <label className={styles.label}>Message</label>
+              <textarea
+                name="message"
+                className={`${styles.input} ${styles.textarea}`}
+                rows={6}
+                required
+              />
+            </div>
+            <div className={styles.btnRow}>
+              <button type="submit" className={styles.sendBtn} disabled={sending}>
+                {sending ? 'SENDING...' : 'SEND MESSAGE'}
+              </button>
+            </div>
+          </form>
+        )}
+      </main>
+
+      <footer className={styles.foot}>
+        <button className={styles.backBtn} onClick={handleBack}>
+          ← BACK
+        </button>
+      </footer>
     </div>
   );
 }

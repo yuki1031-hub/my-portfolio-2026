@@ -1,95 +1,100 @@
 .page {
-  min-height: 100%;
-  background: #9ea87a;
+  min-height: 100vh;
+  background: #ffffff;
   color: #111111;
-  padding: 24px 28px 32px;
-  font-family: 'Dot Gothic 16', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
   display: flex;
   flex-direction: column;
 }
 
-.topBar {
+/* ─── Main ─── */
+.main {
+  flex: 1;
+  padding: 160px 2% 80px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 32px;
 }
 
 .pageTitle {
-  font-size: 0.65rem;
+  font-size: 15px;
   letter-spacing: 0.25em;
-  color: #e111;
+  color: #111111;
   font-weight: normal;
+  margin-bottom: 48px;
+  align-self: flex-start;
 }
 
+/* ─── フォーム ─── */
 .form {
+  width: 100%;
+  max-width: 540px;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  max-width: 560px;
-  width: 100%;
+  gap: 20px;
 }
 
 .field {
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.field:last-of-type {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.label {
+  font-size: 15px;
+  color: #111111;
+  letter-spacing: 0.08em;
 }
 
+/* 紫基調の入力欄 */
 .input {
   width: 100%;
-  background: transparent;
-  border: none;
+  background: #f5f3ff;
+  border: 1.5px solid #c4b5fd;
+  border-radius: 8px;
   outline: none;
   color: #111111;
-  font-family: 'Dot Gothic 16', sans-serif;
-  font-size: 0.5rem;
-  padding: 16px 4px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  padding: 14px 16px;
   line-height: 1.8;
   resize: none;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.input::placeholder {
-  color: #111;
-  opacity: 1;
-}
-
-.inputOrange::placeholder {
-  color: #111;
-  opacity: 1;
-}
-
-.inputYellow::placeholder {
-  color: #111;
-  opacity: 1;
+.input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
 }
 
 .textarea {
   display: block;
-  min-height: 120px;
+  min-height: 140px;
+}
+
+/* 送信ボタン行 — 右寄せ */
+.btnRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
 }
 
 .sendBtn {
-  margin-top: 28px;
-  align-self: flex-start;
-  font-family: 'Dot Gothic 16', sans-serif;
-  font-size: 0.5rem;
-  letter-spacing: 0.1em;
-  color: #111111;
-  background: transparent;
-  border: 3px solid #111111;
-  padding: 12px 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  background: #7c3aed;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 40px;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-  line-height: 1;
+  transition: background 0.2s, opacity 0.2s;
 }
 
 .sendBtn:hover:not(:disabled) {
-  background: #111111;
-  color: #9ea87a;
+  background: #6d28d9;
 }
 
 .sendBtn:disabled {
@@ -97,18 +102,53 @@
   cursor: not-allowed;
 }
 
+/* 送信完了 */
 .sentMsg {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 40px 0;
-  font-size: 0.65rem;
-  color: #111;
+  font-size: 15px;
+  color: #111111;
   letter-spacing: 0.1em;
   line-height: 2;
+  text-align: center;
 }
 
 .sentSub {
-  font-size: 0.45rem;
-  color: #444444;
+  font-size: 15px;
+  color: #7c3aed;
+}
+
+/* ─── Footer / Back ─── */
+.foot {
+  display: flex;
+  justify-content: center;
+  padding: 32px 0 56px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.backBtn {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: #555555;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.backBtn:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+/* ─── レスポンシブ ─── */
+@media (max-width: 600px) {
+  .main {
+    padding: 48px 6% 60px;
+  }
 }

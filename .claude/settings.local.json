@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"C:\\\\Users\\\\hishi\\\\Documents\\\\portfolio2026\\\\portfolio\\(gameboy\\)\" -type f -name \"*.html\" -o -name \"*.css\" -o -name \"*.js\" -o -name \"*.json\")",
+      "Bash(npx tsc:*)",
+      "Bash(ls:*)"
+    ]
+  }
+}

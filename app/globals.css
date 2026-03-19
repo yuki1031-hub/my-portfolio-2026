@@ -4,42 +4,16 @@
   padding: 0;
 }
 
-@font-face {
-  font-family: 'Dot Gothic 16';
-  src: url('/fonts/DotGothic16-Regular.ttf') format('truetype');
-}
-
 html {
-  font-size: 24px;
+  font-size: 16px;
 }
 
 html, body {
-  font-family: 'Dot Gothic 16', sans-serif;
-  font-weight: bold;
-  background-color: #9ea87a;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  background-color: #ffffff;
   min-height: 100vh;
-  height: 100%;
-}
-
-body {
-  position: relative;
-  overflow: hidden;
-}
-
-/* スキャンライン overlay */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.06) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
-  pointer-events: none;
-  z-index: 9998;
+  overflow-x: hidden;
 }
 
 a {
@@ -50,4 +24,22 @@ a {
 button {
   cursor: pointer;
   font-family: inherit;
+}
+
+/* ─────────────────────────────────
+   ページ入場アニメーション（ふんわり）
+───────────────────────────────── */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pageEnter {
+  animation: pageEnter 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }

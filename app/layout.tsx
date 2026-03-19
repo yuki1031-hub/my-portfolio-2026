@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Bezel from '../components/Bezel';
 
 export const metadata: Metadata = {
   title: 'HSHKW',
@@ -17,10 +16,13 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Dot+Gothic+16&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>
-        <Bezel>{children}</Bezel>
+        {children}
       </body>
     </html>
   );

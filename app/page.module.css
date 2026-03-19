@@ -1,44 +1,251 @@
-.home {
-  min-height: 100%;
+/*
+  ヘッダー高さ: 80px
+  top3 margin-top  : 80px × 2 = 160px
+  top3 横余白      : 2%
+  セクション間ギャップ: 80px × 1 = 80px
+  bottomGrid 横余白  : 1%
+*/
+
+.page {
+  min-height: 100vh;
+  background: #ffffff;
+  color: #111111;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* ─── Main ─── */
+.main {
+  padding-bottom: 100px;
+}
+
+/* ─── Top 3 (3列) ─── */
+.topRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 160px 2% 0;
+  margin-bottom: 80px;
+}
+
+/* ─── Bottom (2列ペア) ─── */
+.bottomSection {
+  padding: 0 1%;
   display: flex;
   flex-direction: column;
-  background: #9ea87a;
+  gap: 20px;
+}
+
+.pairRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ─── スクロールアニメーション ─── */
+.animRow {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.animRow.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── カード ─── */
+.card {
+  position: relative;        /* overlay を絶対配置するために必要 */
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  /* 同グリッド内で z-index が効くように */
+  isolation: isolate;
+}
+
+/* PC hover: ズーム + 影 */
+@media (hover: hover) {
+  .card:hover {
+    transform: scale(1.035);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  }
+
+  .card:hover .cardOverlay {
+    opacity: 1;
+  }
+
+  /* close ボタンは PC 不要 */
+  .overlayClose {
+    display: none;
+  }
+}
+
+/* スマホ: JS active クラス */
+.cardActive {
+  transform: scale(1.035);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.cardActive .cardOverlay {
+  opacity: 1;
+}
+
+/* ─── カード サムネイル ─── */
+.cardThumb {
+  width: 100%;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+/* 画像を全体表示（クロップなし） */
+.cardImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+@media (hover: hover) {
+  .card:hover .cardImg {
+    transform: scale(1.03);
+  }
+}
+
+.cardActive .cardImg {
+  transform: scale(1.03);
+}
+
+/* ─── カード 情報 ─── */
+.cardInfo {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* カテゴリータグ（共通） */
+.cardCategory {
+  display: inline-block;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+}
+
+/* LINE: 緑 */
+.categoryLine {
+  display: inline-block;    /* 文字幅に合わせる */
+  align-self: flex-start;   /* flex column 内でカード幅いっぱいにならないよう */
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #06c755;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* LP: オレンジ */
+.categoryLp {
+  display: inline-block;    /* 文字幅に合わせる */
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #f59e0b;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.cardName {
+  font-size: 15px;
   color: #111111;
-  padding: 20px 24px 16px;
-  animation: homeFlicker 7s infinite;
+  line-height: 1.6;
 }
 
-@keyframes homeFlicker {
-  0%, 91%, 100% { opacity: 1; }
-  92% { opacity: 0.93; }
-  93% { opacity: 1; }
-  95% { opacity: 0.86; }
-  96% { opacity: 1; }
-  98% { opacity: 0.95; }
-  99% { opacity: 1; }
-}
-
-.main {
-  flex: 1;
+/* ─── ホバー / タップ オーバーレイ ─── */
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.82);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-}
-
-.tvWrap {
-  padding: 12px 16px 4px;
-  width: 100%;
-  display: flex;
   justify-content: center;
+  gap: 14px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: inherit;
 }
 
-.footer {
-  text-align: center;
-  font-family: 'Dot Gothic 16', sans-serif;
-  font-size: 0.4rem;
-  color: #444444;
-  letter-spacing: 0.08em;
-  padding-top: 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+.overlayMore {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  color: #111111;
+  border: 1.5px solid #111111;
+  border-radius: 6px;
+  padding: 10px 32px;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+}
+
+.overlayMore:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+/* close は @media (hover: none) で表示 */
+.overlayClose {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.38rem;
+  letter-spacing: 0.1em;
+  color: #888888;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 7px 20px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.overlayClose:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ─── レスポンシブ ─── */
+@media (max-width: 900px) {
+  .topRow {
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .topRow {
+    grid-template-columns: 1fr;
+    padding: 2vw 10% 0;   /* 上: 2%  左右: 10% */
+    margin-bottom: 40px;
+  }
+
+  .bottomSection {
+    padding: 0 10%;        /* 左右 10% */
+  }
+
+  .pairRow {
+    grid-template-columns: 1fr;
+  }
 }
