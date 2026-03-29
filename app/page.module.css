@@ -178,6 +178,51 @@
   align-items: center;
 }
 
+/* 音声認識AI: パープル */
+.badgeAI {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #7c3aed;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* DB連携: ブルー */
+.badgeDB {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* Make不要: シアン */
+.badgeMake {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #0891b2;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
 /* Lステップ: LINEと同配色 */
 .categoryLstep {
   display: inline-block;

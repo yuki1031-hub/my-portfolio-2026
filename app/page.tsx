@@ -3,19 +3,25 @@ import { useState, useEffect, useRef } from 'react';
 import SiteHeader from '../components/SiteHeader';
 import styles from './page.module.css';
 
+const EXTRA_BADGE_STYLES: Record<string, string> = {
+  '音声認識AI': 'badgeAI',
+  'DB連携': 'badgeDB',
+  'Make不要': 'badgeMake',
+};
+
 const PROJECTS = [
   {
-    id: 'ijin',
-    name: '性格診断（点数制ロジック）',
+    id: 'snack',
+    name: 'バー・美容室など常連客を持つ店舗向け｜おもてなし自動化サービス',
     category: 'LINE',
-    badges: ['Lステップ', '9問スコア加算', '8パターン分岐', 'シナリオ設計'],
-    desc: '9問のスコア加算方式で、合計点数に応じて8パターンの偉人キャラクターを診断。シナリオ分岐とリッチメニュー連動で没入感のある体験を設計。',
-    image: '/images/ijin.png',
-    url: 'https://flying-glazer-dfd.notion.site/32591932982b80bcaab8e0c287fbab7c?source=copy_link',
+    badges: ['LINE', '音声認識AI', 'DB連携', 'Make不要'],
+    desc: 'バー・美容室など常連客を持つ店舗向け｜おもてなし自動化サービス',
+    image: '/images/snackth.png',
+    url: 'https://flying-glazer-dfd.notion.site/LINE-33091932982b805c9ed4c647158642a1?source=copy_link',
   },
   {
     id: 'color',
-    name: '予約×自動化シナリオ',
+    name: 'サロン向け｜予約〜リピートまで無人化したLINE自動化',
     category: 'LINE',
     badges: ['Lステップ', '回答フォーム', 'タグ出し分け', 'LINE内CV', 'CV後シナリオ', 'リマインダー'],
     desc: 'LINE追加からユーザーの出し分け、予約完了・リピート促進まで全自動で動くエステサロン向けシナリオ',
@@ -24,12 +30,21 @@ const PROJECTS = [
   },
   {
     id: 'flow',
-    name: 'URLパラメータ別シナリオ出し分け',
+    name: '広告運用者向け｜流入元別にLINEメッセージを自動出し分け',
     category: 'LINE',
     badges: ['Lステップ', 'URLパラメータ別出し分け', 'ダイナミックメッセージ', '回答フォーム×タグ付け'],
     desc: 'Instagram広告・Google広告それぞれの流入元に応じてシナリオを自動で出し分け。ヒアリングフォームの回答結果をもとにタグを自動付与し、興味ジャンルに合わせたコース案内を配信。',
     image: '/images/flow-thumbnail.png',
     url: 'https://flying-glazer-dfd.notion.site/URL-32691932982b807b868ef894a5bfb68d?source=copy_link',
+  },
+  {
+    id: 'ijin',
+    name: '診断コンテンツ｜9問に答えるだけで偉人タイプを自動判定・結果別メッセージ配信',
+    category: 'LINE',
+    badges: ['Lステップ', '9問スコア加算', '8パターン分岐', 'シナリオ設計'],
+    desc: '9問のスコア加算方式で、合計点数に応じて8パターンの偉人キャラクターを診断。シナリオ分岐とリッチメニュー連動で没入感のある体験を設計。',
+    image: '/images/ijin.png',
+    url: 'https://flying-glazer-dfd.notion.site/32591932982b80bcaab8e0c287fbab7c?source=copy_link',
   },
   {
     id: 'richmenu',
@@ -150,6 +165,9 @@ export default function Home() {
                   {p.badges.includes('Lステップ') && (
                     <span className={styles.categoryLstep}>Lステップ</span>
                   )}
+                  {p.badges.filter((b) => b !== 'LINE' && b !== 'Lステップ' && EXTRA_BADGE_STYLES[b]).map((b) => (
+                    <span key={b} className={styles[EXTRA_BADGE_STYLES[b] as keyof typeof styles]}>{b}</span>
+                  ))}
                 </div>
                 <div className={styles.cardName}>{p.name}</div>
               </div>
