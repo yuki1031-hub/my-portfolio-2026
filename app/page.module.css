@@ -208,6 +208,51 @@
   white-space: nowrap;
 }
 
+/* RAG: クリムゾン */
+.badgeRAG {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #e11d48;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* AI検索: オレンジ */
+.badgeAISearch {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #ea580c;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* Python: ティール */
+.badgePython {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #0d9488;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
 /* Make不要: シアン */
 .badgeMake {
   display: inline-block;

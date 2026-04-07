@@ -7,6 +7,9 @@ const EXTRA_BADGE_STYLES: Record<string, string> = {
   '音声認識AI': 'badgeAI',
   'DB連携': 'badgeDB',
   'Make不要': 'badgeMake',
+  'RAG': 'badgeRAG',
+  'AI検索': 'badgeAISearch',
+  'Python': 'badgePython',
 };
 
 const PROJECTS = [
@@ -18,6 +21,15 @@ const PROJECTS = [
     desc: 'バー・美容室など常連客を持つ店舗向け｜おもてなし自動化サービス',
     image: '/images/snackth.png',
     url: 'https://flying-glazer-dfd.notion.site/LINE-33091932982b805c9ed4c647158642a1?source=copy_link',
+  },
+  {
+    id: 'ragbot',
+    name: 'LINE公式ドキュメント RAGボット',
+    category: 'LINE',
+    badges: ['LINE', 'RAG', 'AI検索', 'Python'],
+    desc: 'LINE公式ドキュメント RAGボット',
+    image: '/images/ragbot_th_p.png',
+    url: 'https://flying-glazer-dfd.notion.site/LINE-RAG-33b91932982b802ab904d10a2fd2d28e?source=copy_link',
   },
   {
     id: 'color',
