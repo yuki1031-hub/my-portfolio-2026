@@ -10,6 +10,10 @@ const EXTRA_BADGE_STYLES: Record<string, string> = {
   'RAG': 'badgeRAG',
   'AI検索': 'badgeAISearch',
   'Python': 'badgePython',
+  'エルメ': 'badgeElme',
+  'リッチメニュー': 'badgeRichMenu',
+  'フォーム': 'badgeForm',
+  'タグ分岐': 'badgeTagBranch',
 };
 
 const PROJECTS = [
@@ -39,6 +43,15 @@ const PROJECTS = [
     desc: 'LINE追加からユーザーの出し分け、予約完了・リピート促進まで全自動で動くエステサロン向けシナリオ',
     image: '/images/dainamik.png',
     url: 'https://flying-glazer-dfd.notion.site/LINE-32591932982b80d6959cc418402ce460?source=copy_link',
+  },
+  {
+    id: 'golf',
+    name: 'ゴルフ用品買取サービス｜エルメ×LINE 集客・フォーム自動化構築',
+    category: 'LINE',
+    badges: ['LINE', 'エルメ', 'リッチメニュー', 'フォーム', 'タグ分岐'],
+    desc: 'エルメを活用したゴルフスクール向けLINE自動化。リッチメニューによる導線設計、フォーム回答に応じたタグ自動付与で見込み顧客を自動セグメント。',
+    image: '/images/golfth.png',
+    url: 'https://flying-glazer-dfd.notion.site/LINE-34991932982b8072898bc2df9daed841?source=copy_link',
   },
   {
     id: 'flow',
@@ -229,6 +242,9 @@ export default function Home() {
                       {p.badges.includes('Lステップ') && (
                         <span className={styles.categoryLstep}>Lステップ</span>
                       )}
+                      {p.badges.filter((b) => b !== 'LINE' && b !== 'Lステップ' && EXTRA_BADGE_STYLES[b]).map((b) => (
+                        <span key={b} className={styles[EXTRA_BADGE_STYLES[b] as keyof typeof styles]}>{b}</span>
+                      ))}
                     </div>
                     <div className={styles.cardName}>{p.name}</div>
                   </div>

@@ -253,6 +253,66 @@
   white-space: nowrap;
 }
 
+/* エルメ: 緑（LINE同色） */
+.badgeElme {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #06c755;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* リッチメニュー: インディゴ */
+.badgeRichMenu {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #4f46e5;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* フォーム: ピンク */
+.badgeForm {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #db2777;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* タグ分岐: アンバー */
+.badgeTagBranch {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #d97706;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
 /* Make不要: シアン */
 .badgeMake {
   display: inline-block;
