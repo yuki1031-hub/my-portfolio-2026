@@ -80,6 +80,15 @@ const PROJECTS = [
     image: '/images/rm-thumbnail.png',
     url: 'https://flying-glazer-dfd.notion.site/32591932982b8084b5fcdbcd5bb49b00?source=copy_link',
   },
+    {
+    id: 'kodomoshokudo',
+    name: '子ども食堂LP',
+    category: 'LP',
+    badges: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    desc: '地域の子ども食堂のLP。温かみのある色合いとNext.jsで高速表示を実現。',
+    image: '/images/chlptmjpg.jpg',
+    url: 'https://kodomo-shokudo-lp.vercel.app/',
+  },
   {
     id: 'gym-lp1',
     name: 'ジムLP①',
@@ -116,15 +125,7 @@ const PROJECTS = [
     image: '/images/women.jpg',
     url: 'https://womens-depilation-lp.vercel.app/',
   },
-  {
-    id: 'kodomoshokudo',
-    name: '子ども食堂LP',
-    category: 'LP',
-    badges: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-    desc: '地域の子ども食堂のLP。温かみのある色合いとNext.jsで高速表示を実現。',
-    image: '/images/kodomo.jpg',
-    url: 'https://kodomoshokudo-lp.vercel.app/',
-  },
+
 ];
 
 export default function Home() {
