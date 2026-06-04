@@ -4,7 +4,11 @@
       "Bash(find \"C:\\\\Users\\\\hishi\\\\Documents\\\\portfolio2026\\\\portfolio\\(gameboy\\)\" -type f -name \"*.html\" -o -name \"*.css\" -o -name \"*.js\" -o -name \"*.json\")",
       "Bash(npx tsc:*)",
       "Bash(ls:*)",
-      "WebFetch(domain:flying-glazer-dfd.notion.site)"
+      "WebFetch(domain:flying-glazer-dfd.notion.site)",
+      "Bash(dir C:\\\\Users\\\\hishi\\\\Documents\\\\portfolio2026\\\\portfolio\\(sales\\) *)",
+      "Bash(npm run *)",
+      "Bash(Start-Process powershell *)",
+      "Bash(Select-Object Id)"
     ]
   }
 }

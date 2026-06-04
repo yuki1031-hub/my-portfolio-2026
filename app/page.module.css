@@ -1,11 +1,3 @@
-/*
-  ヘッダー高さ: 80px
-  top3 margin-top  : 80px × 2 = 160px
-  top3 横余白      : 2%
-  セクション間ギャップ: 80px × 1 = 80px
-  bottomGrid 横余白  : 1%
-*/
-
 .page {
   min-height: 100vh;
   background: #ffffff;
@@ -13,38 +5,114 @@
   font-family: 'Noto Sans JP', sans-serif;
 }
 
+/* ─── カテゴリーナビ（上端sticky） ─── */
+.categoryNav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.categoryNav::-webkit-scrollbar {
+  display: none;
+}
+
+.categoryNavItem {
+  flex-shrink: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px;
+  color: #666;
+  letter-spacing: 0.05em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 13px 22px;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.categoryNavItem::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 22px;
+  right: 22px;
+  height: 2px;
+  background: #111111;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.22s ease;
+}
+
+.categoryNavItemActive {
+  color: #111111;
+  font-weight: 700;
+}
+
+.categoryNavItemActive::after {
+  transform: scaleX(1);
+}
+
 /* ─── Main ─── */
 .main {
-  padding-bottom: 100px;
+  padding: 48px 8% 120px; /* PC: 左右余白を4倍（2%→8%）。stickyナビはフロー内のため上は 48px のみ */
 }
 
-/* ─── Top 3 (3列) ─── */
-.topRow {
+/* ─── セクション ─── */
+.section {
+  scroll-margin-top: calc(var(--catnav-height, 48px) + 20px); /* ヘッダーはスクロールで流れるため nav 高さのみ */
+  margin-bottom: 72px;
+}
+
+.sectionTitle {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: 0.07em;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ─── ヒーロー（全幅・1列） ─── */
+.heroGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 160px 2% 0;
-  margin-bottom: 80px;
-}
-
-/* ─── Bottom (2列ペア) ─── */
-.bottomSection {
-  padding: 0 1%;
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
-.pairRow {
+/* ─── 2列グリッド ─── */
+.grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+}
+
+/* Coming Soon */
+.comingSoon {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px;
+  color: #aaa;
+  text-align: center;
+  padding: 48px 0;
+  border: 1px dashed rgba(0, 0, 0, 0.13);
+  border-radius: 12px;
+  letter-spacing: 0.1em;
 }
 
 /* ─── スクロールアニメーション ─── */
 .animRow {
   opacity: 0;
-  transform: translateY(48px);
+  transform: translateY(40px);
   transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
@@ -55,18 +123,16 @@
 
 /* ─── カード ─── */
 .card {
-  position: relative;        /* overlay を絶対配置するために必要 */
+  position: relative;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.28s ease, box-shadow 0.28s ease;
-  /* 同グリッド内で z-index が効くように */
   isolation: isolate;
 }
 
-/* PC hover: ズーム + 影 */
 @media (hover: hover) {
   .card:hover {
     transform: scale(1.035);
@@ -78,13 +144,11 @@
     opacity: 1;
   }
 
-  /* close ボタンは PC 不要 */
   .overlayClose {
     display: none;
   }
 }
 
-/* スマホ: JS active クラス */
 .cardActive {
   transform: scale(1.035);
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1);
@@ -95,14 +159,13 @@
   opacity: 1;
 }
 
-/* ─── カード サムネイル ─── */
+/* ─── サムネイル ─── */
 .cardThumb {
   width: 100%;
   overflow: hidden;
   background: #f5f5f5;
 }
 
-/* 画像を全体表示（クロップなし） */
 .cardImg {
   width: 100%;
   height: auto;
@@ -110,17 +173,29 @@
   transition: transform 0.35s ease;
 }
 
+.cardImgContain {
+  width: 50%;
+  height: 140px;
+  object-fit: contain;
+  display: block;
+  margin: 28px auto;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+  transition: transform 0.35s ease;
+}
+
 @media (hover: hover) {
-  .card:hover .cardImg {
+  .card:hover .cardImg,
+  .card:hover .cardImgContain {
     transform: scale(1.03);
   }
 }
 
-.cardActive .cardImg {
+.cardActive .cardImg,
+.cardActive .cardImgContain {
   transform: scale(1.03);
 }
 
-/* ─── カード 情報 ─── */
+/* ─── カード情報 ─── */
 .cardInfo {
   padding: 14px 16px 18px;
   display: flex;
@@ -128,22 +203,17 @@
   gap: 5px;
 }
 
-/* カテゴリータグ（共通） */
-.cardCategory {
-  display: inline-block;
-  font-size: 12px;
-  font-family: 'Noto Sans JP', sans-serif;
-  color: #ffffff;
-  padding: 3px 10px;
-  border-radius: 20px;
-  letter-spacing: 0.08em;
-  line-height: 1.6;
+.badgeRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
 }
 
-/* LINE: 緑 */
+/* タグ: LINE */
 .categoryLine {
-  display: inline-block;    /* 文字幅に合わせる */
-  align-self: flex-start;   /* flex column 内でカード幅いっぱいにならないよう */
+  display: inline-block;
+  align-self: flex-start;
   font-size: 12px;
   font-family: 'Noto Sans JP', sans-serif;
   background: #06c755;
@@ -155,9 +225,9 @@
   white-space: nowrap;
 }
 
-/* LP: オレンジ */
+/* タグ: LP */
 .categoryLp {
-  display: inline-block;    /* 文字幅に合わせる */
+  display: inline-block;
   align-self: flex-start;
   font-size: 12px;
   font-family: 'Noto Sans JP', sans-serif;
@@ -170,15 +240,37 @@
   white-space: nowrap;
 }
 
-/* バッジ行（LINE + Lステップを横並び） */
-.badgeRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
+/* タグ: Web */
+.categoryWeb {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #1a4fa0;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
 }
 
-/* 音声認識AI: パープル */
+/* タグ: Lステップ */
+.categoryLstep {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #06c755;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* ─── スペシャルバッジ ─── */
 .badgeAI {
   display: inline-block;
   align-self: flex-start;
@@ -193,7 +285,6 @@
   white-space: nowrap;
 }
 
-/* DB連携: ブルー */
 .badgeDB {
   display: inline-block;
   align-self: flex-start;
@@ -208,7 +299,6 @@
   white-space: nowrap;
 }
 
-/* RAG: クリムゾン */
 .badgeRAG {
   display: inline-block;
   align-self: flex-start;
@@ -223,7 +313,6 @@
   white-space: nowrap;
 }
 
-/* AI検索: オレンジ */
 .badgeAISearch {
   display: inline-block;
   align-self: flex-start;
@@ -238,7 +327,6 @@
   white-space: nowrap;
 }
 
-/* Python: ティール */
 .badgePython {
   display: inline-block;
   align-self: flex-start;
@@ -253,7 +341,6 @@
   white-space: nowrap;
 }
 
-/* エルメ: 緑（LINE同色） */
 .badgeElme {
   display: inline-block;
   align-self: flex-start;
@@ -268,7 +355,6 @@
   white-space: nowrap;
 }
 
-/* リッチメニュー: インディゴ */
 .badgeRichMenu {
   display: inline-block;
   align-self: flex-start;
@@ -283,7 +369,6 @@
   white-space: nowrap;
 }
 
-/* フォーム: ピンク */
 .badgeForm {
   display: inline-block;
   align-self: flex-start;
@@ -298,7 +383,6 @@
   white-space: nowrap;
 }
 
-/* タグ分岐: アンバー */
 .badgeTagBranch {
   display: inline-block;
   align-self: flex-start;
@@ -313,28 +397,12 @@
   white-space: nowrap;
 }
 
-/* Make不要: シアン */
 .badgeMake {
   display: inline-block;
   align-self: flex-start;
   font-size: 12px;
   font-family: 'Noto Sans JP', sans-serif;
   background: #0891b2;
-  color: #ffffff;
-  padding: 3px 10px;
-  border-radius: 20px;
-  letter-spacing: 0.08em;
-  line-height: 1.6;
-  white-space: nowrap;
-}
-
-/* Lステップ: LINEと同配色 */
-.categoryLstep {
-  display: inline-block;
-  align-self: flex-start;
-  font-size: 12px;
-  font-family: 'Noto Sans JP', sans-serif;
-  background: #06c755;
   color: #ffffff;
   padding: 3px 10px;
   border-radius: 20px;
@@ -381,7 +449,6 @@
   color: #ffffff;
 }
 
-/* close は @media (hover: none) で表示 */
 .overlayClose {
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 0.38rem;
@@ -399,26 +466,141 @@
   background: rgba(0, 0, 0, 0.06);
 }
 
+/* ─── 代表作バッジ ─── */
+.badgeFeatured {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 11px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #f59e0b;
+  color: #ffffff;
+  padding: 2px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+/* ─── 新規バッジ ─── */
+.badgeLiff {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #059669;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.badgeApiRenkei {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.badgeChosen {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #dc2626;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.badgeVps {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #475569;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* ─── LP別セクション ─── */
+.lpSection {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.lpSectionTitle {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #999;
+  letter-spacing: 0.07em;
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.lpGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  opacity: 0.8;
+}
+
 /* ─── レスポンシブ ─── */
 @media (max-width: 900px) {
-  .topRow {
-    grid-template-columns: repeat(2, 1fr);
-    padding-top: 80px;
+  .categoryNavItem {
+    font-size: 12px;
+    padding: 11px 16px;
+  }
+
+  .categoryNavItem::after {
+    left: 16px;
+    right: 16px;
   }
 }
 
 @media (max-width: 600px) {
-  .topRow {
-    grid-template-columns: 1fr;
-    padding: 2vw 10% 0;   /* 上: 2%  左右: 10% */
-    margin-bottom: 40px;
+  .main {
+    padding: 32px 5% 80px;
   }
 
-  .bottomSection {
-    padding: 0 10%;        /* 左右 10% */
+  .grid {
+    grid-template-columns: 1fr;
   }
 
-  .pairRow {
-    grid-template-columns: 1fr;
+  .lpGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sectionTitle {
+    font-size: 15px;
+  }
+
+  .categoryNavItem {
+    font-size: 11px;
+    padding: 10px 14px;
+  }
+
+  .categoryNavItem::after {
+    left: 14px;
+    right: 14px;
   }
 }

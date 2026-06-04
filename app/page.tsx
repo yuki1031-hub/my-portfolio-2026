@@ -14,127 +14,193 @@ const EXTRA_BADGE_STYLES: Record<string, string> = {
   'リッチメニュー': 'badgeRichMenu',
   'フォーム': 'badgeForm',
   'タグ分岐': 'badgeTagBranch',
+  'LIFF': 'badgeLiff',
+  'API連携': 'badgeApiRenkei',
+  '抽選': 'badgeChosen',
+  'VPS運用': 'badgeVps',
 };
 
-const PROJECTS = [
+const CATEGORIES = [
+  { id: 'cat-dev',  label: '① カスタム開発・API連携' },
+  { id: 'cat-ai',   label: '② AI活用システム' },
+  { id: 'cat-line', label: '③ LINE構築（Lステップ・エルメ）' },
+];
+
+interface Project {
+  id: string;
+  cat: string;
+  tag: string;
+  name: string;
+  badges: string[];
+  image: string;
+  thumbBg?: string;
+  url: string;
+  featured?: boolean;
+}
+
+const PROJECTS: Project[] = [
+  // ① カスタム開発・API連携（ヒーロー1件）
+  {
+    id: 'campaign',
+    cat: 'cat-dev',
+    tag: 'LINE',
+    name: '住宅メーカー向け｜大規模LINE抽選キャンペーンを単独構築・本番稼働',
+    badges: ['LINE', 'LIFF', 'API連携', '抽選', 'VPS運用'],
+    image: '/images/campaign-th.png',
+    url: 'https://flying-glazer-dfd.notion.site/LINE-37591932982b804eaff7c06f971c5ea0?source=copy_link',
+    featured: true,
+  },
+  // ② AI活用システム
   {
     id: 'snack',
+    cat: 'cat-ai',
+    tag: 'LINE',
     name: 'バー・美容室など常連客を持つ店舗向け｜おもてなし自動化サービス',
-    category: 'LINE',
     badges: ['LINE', '音声認識AI', 'DB連携', 'Make不要'],
-    desc: 'バー・美容室など常連客を持つ店舗向け｜おもてなし自動化サービス',
     image: '/images/snackth.png',
     url: 'https://flying-glazer-dfd.notion.site/LINE-33091932982b805c9ed4c647158642a1?source=copy_link',
   },
   {
     id: 'ragbot',
+    cat: 'cat-ai',
+    tag: 'LINE',
     name: 'LINE公式ドキュメント RAGボット',
-    category: 'LINE',
     badges: ['LINE', 'RAG', 'AI検索', 'Python'],
-    desc: 'LINE公式ドキュメント RAGボット',
     image: '/images/ragbot_th_p.png',
     url: 'https://flying-glazer-dfd.notion.site/LINE-RAG-33b91932982b802ab904d10a2fd2d28e?source=copy_link',
   },
-  {
-    id: 'color',
-    name: 'サロン向け｜予約〜リピートまで無人化したLINE自動化',
-    category: 'LINE',
-    badges: ['Lステップ', '回答フォーム', 'タグ出し分け', 'LINE内CV', 'CV後シナリオ', 'リマインダー'],
-    desc: 'LINE追加からユーザーの出し分け、予約完了・リピート促進まで全自動で動くエステサロン向けシナリオ',
-    image: '/images/dainamik.png',
-    url: 'https://flying-glazer-dfd.notion.site/LINE-32591932982b80d6959cc418402ce460?source=copy_link',
-  },
+  // ③ LINE構築（Lステップ・エルメ）
   {
     id: 'golf',
+    cat: 'cat-line',
+    tag: 'LINE',
     name: 'ゴルフ用品買取サービス｜エルメ×LINE 集客・フォーム自動化構築',
-    category: 'LINE',
     badges: ['LINE', 'エルメ', 'リッチメニュー', 'フォーム', 'タグ分岐'],
-    desc: 'エルメを活用したゴルフスクール向けLINE自動化。リッチメニューによる導線設計、フォーム回答に応じたタグ自動付与で見込み顧客を自動セグメント。',
     image: '/images/golfth.png',
     url: 'https://flying-glazer-dfd.notion.site/LINE-34991932982b8072898bc2df9daed841?source=copy_link',
   },
   {
+    id: 'color',
+    cat: 'cat-line',
+    tag: 'LINE',
+    name: 'サロン向け｜予約〜リピートまで無人化したLINE自動化',
+    badges: ['Lステップ', '回答フォーム', 'タグ出し分け', 'LINE内CV', 'CV後シナリオ', 'リマインダー'],
+    image: '/images/dainamik.png',
+    url: 'https://flying-glazer-dfd.notion.site/LINE-32591932982b80d6959cc418402ce460?source=copy_link',
+  },
+  {
     id: 'flow',
+    cat: 'cat-line',
+    tag: 'LINE',
     name: '広告運用者向け｜流入元別にLINEメッセージを自動出し分け',
-    category: 'LINE',
     badges: ['Lステップ', 'URLパラメータ別出し分け', 'ダイナミックメッセージ', '回答フォーム×タグ付け'],
-    desc: 'Instagram広告・Google広告それぞれの流入元に応じてシナリオを自動で出し分け。ヒアリングフォームの回答結果をもとにタグを自動付与し、興味ジャンルに合わせたコース案内を配信。',
     image: '/images/flow-thumbnail.png',
     url: 'https://flying-glazer-dfd.notion.site/URL-32691932982b807b868ef894a5bfb68d?source=copy_link',
   },
   {
     id: 'ijin',
+    cat: 'cat-line',
+    tag: 'LINE',
     name: '診断コンテンツ｜9問に答えるだけで偉人タイプを自動判定・結果別メッセージ配信',
-    category: 'LINE',
     badges: ['Lステップ', '9問スコア加算', '8パターン分岐', 'シナリオ設計'],
-    desc: '9問のスコア加算方式で、合計点数に応じて8パターンの偉人キャラクターを診断。シナリオ分岐とリッチメニュー連動で没入感のある体験を設計。',
+    image: '/images/ijin.png',
+    url: 'https://flying-glazer-dfd.notion.site/32591932982b80bcaab8e0c287fbab7c?source=copy_link',
+  },
+  {
+    id: 'ijin2',
+    cat: 'cat-line',
+    tag: 'LINE',
+    name: '診断コンテンツ｜9問に答えるだけで偉人タイプを自動判定・結果別メッセージ配信',
+    badges: ['Lステップ', '9問スコア加算', '8パターン分岐', 'シナリオ設計'],
     image: '/images/ijin.png',
     url: 'https://flying-glazer-dfd.notion.site/32591932982b80bcaab8e0c287fbab7c?source=copy_link',
   },
   {
     id: 'richmenu',
+    cat: 'cat-line',
+    tag: 'LINE',
     name: 'リッチメニュー構築',
-    category: 'LINE',
     badges: ['Lステップ', 'Canva', '3分割レイアウト'],
-    desc: '転職相談サービス向けのリッチメニュー。3分割レイアウトで各ボタンに外部URLを設定。Canvaでクリエイティブを制作しLステップに実装。',
     image: '/images/rm-thumbnail.png',
     url: 'https://flying-glazer-dfd.notion.site/32591932982b8084b5fcdbcd5bb49b00?source=copy_link',
   },
-    {
+  // LP（別セクション）
+  {
     id: 'kodomoshokudo',
+    cat: 'cat4',
+    tag: 'LP',
     name: '子ども食堂LP',
-    category: 'LP',
     badges: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-    desc: '地域の子ども食堂のLP。温かみのある色合いとNext.jsで高速表示を実現。',
     image: '/images/chlptmjpg.jpg',
     url: 'https://kodomo-shokudo-lp.vercel.app/',
   },
   {
+    id: 'portfolio',
+    cat: 'cat4',
+    tag: 'Web',
+    name: 'ポートフォリオサイト（本サイト）',
+    badges: ['Next.js', 'TypeScript', 'CSS Modules'],
+    image: '/images/logo.png',
+    thumbBg: 'linear-gradient(135deg, #1a4fa0 0%, #b6ff47 100%)',
+    url: '/',
+  },
+  {
     id: 'gym-lp1',
+    cat: 'cat4',
+    tag: 'LP',
     name: 'ジムLP①',
-    category: 'LP',
     badges: ['HTML', 'CSS', 'JavaScript'],
-    desc: 'ジムの入会促進LP。ダークトーンとオレンジのコントラストで力強い印象を演出。',
     image: '/images/gym-lp.png',
     url: 'https://gym-lp-gules.vercel.app/',
   },
   {
     id: 'gym-lp2',
+    cat: 'cat4',
+    tag: 'LP',
     name: 'ジムLP②',
-    category: 'LP',
     badges: ['HTML', 'CSS', 'JavaScript'],
-    desc: 'タブ切り替え・スライダー・ビフォーアフター機能付きのリッチなジムLP。',
     image: '/images/gym2.jpg',
     url: 'https://gym-lp2.vercel.app/',
   },
   {
     id: 'mens-depilation',
+    cat: 'cat4',
+    tag: 'LP',
     name: 'メンズ脱毛LP',
-    category: 'LP',
     badges: ['HTML', 'CSS', 'JavaScript'],
-    desc: '男性向け脱毛サロンのLP。落ち着いたネイビーとオレンジで信頼感と活力を表現。',
     image: '/images/men.jpg',
     url: 'https://mens-depilation-lp2.vercel.app/',
   },
   {
     id: 'womens-depilation',
+    cat: 'cat4',
+    tag: 'LP',
     name: 'ウィメンズ脱毛LP',
-    category: 'LP',
     badges: ['HTML', 'CSS', 'JavaScript'],
-    desc: '女性向け脱毛サロンのLP。優しいグラデーションで清潔感と上品さを演出。',
     image: '/images/women.jpg',
     url: 'https://womens-depilation-lp.vercel.app/',
   },
-
 ];
 
 export default function Home() {
-  // スマホ用: タップで開いたカードのID
   const [activeId, setActiveId] = useState<string | null>(null);
-  // スクロールアニメーション用
-  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeCategory, setActiveCategory] = useState<string>('cat-dev');
+  const categoryNavRef = useRef<HTMLElement>(null);
+  const gridRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // IntersectionObserver (スクロール時に下から上アニメ)
+  // カテゴリーナビ高さをCSS変数に反映
+  useEffect(() => {
+    const nav = categoryNavRef.current;
+    if (!nav) return;
+    const ro = new ResizeObserver(() => {
+      document.documentElement.style.setProperty('--catnav-height', `${nav.offsetHeight}px`);
+    });
+    ro.observe(nav);
+    document.documentElement.style.setProperty('--catnav-height', `${nav.offsetHeight}px`);
+    return () => ro.disconnect();
+  }, []);
+
+  // スクロールアニメーション
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -145,132 +211,150 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
-    rowRefs.current.forEach((el) => { if (el) observer.observe(el); });
+    gridRefs.current.forEach((el) => { if (el) observer.observe(el); });
     return () => observer.disconnect();
   }, []);
 
-  // スマホタップハンドラ
+  // スクロールスパイ: アクティブカテゴリー検出
+  useEffect(() => {
+    const handleScroll = () => {
+      const navH = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('--catnav-height') || '0'
+      );
+      const offset = navH + 24;
+      let current = CATEGORIES[0].id;
+      for (const cat of CATEGORIES) {
+        const el = document.getElementById(cat.id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= offset) {
+          current = cat.id;
+        }
+      }
+      setActiveCategory(current);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleCardClick = (id: string) => {
-    const isTouch = window.matchMedia('(hover: none)').matches;
-    if (isTouch) {
+    if (window.matchMedia('(hover: none)').matches) {
       setActiveId((prev) => (prev === id ? null : id));
     }
   };
 
-  const topProjects = PROJECTS.slice(0, 3);
-  const restProjects = PROJECTS.slice(3);
-  const pairs: (typeof PROJECTS)[] = [];
-  for (let i = 0; i < restProjects.length; i += 2) {
-    pairs.push(restProjects.slice(i, i + 2));
-  }
+  const renderCard = (p: Project) => {
+    const tagClass =
+      p.tag === 'LINE' ? styles.categoryLine :
+      p.tag === 'Web'  ? styles.categoryWeb  :
+      styles.categoryLp;
+
+    return (
+      <div
+        key={p.id}
+        className={`${styles.card} ${activeId === p.id ? styles.cardActive : ''}`}
+        onClick={() => handleCardClick(p.id)}
+      >
+        <div
+          className={styles.cardThumb}
+          style={p.thumbBg ? { background: p.thumbBg } : undefined}
+        >
+          <img
+            src={p.image}
+            alt={p.name}
+            className={p.thumbBg ? styles.cardImgContain : styles.cardImg}
+          />
+        </div>
+        <div className={styles.cardInfo}>
+          <div className={styles.badgeRow}>
+            {p.featured && (
+              <span className={styles.badgeFeatured}>代表作</span>
+            )}
+            <span className={tagClass}>{p.tag}</span>
+            {p.badges.includes('Lステップ') && (
+              <span className={styles.categoryLstep}>Lステップ</span>
+            )}
+            {p.badges
+              .filter((b) => b !== 'LINE' && b !== 'Lステップ' && EXTRA_BADGE_STYLES[b])
+              .map((b) => (
+                <span key={b} className={styles[EXTRA_BADGE_STYLES[b] as keyof typeof styles]}>{b}</span>
+              ))}
+          </div>
+          <div className={styles.cardName}>{p.name}</div>
+        </div>
+        <div className={styles.cardOverlay}>
+          <a
+            href={p.url}
+            target={p.url.startsWith('http') ? '_blank' : '_self'}
+            rel={p.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+            className={styles.overlayMore}
+            onClick={(e) => e.stopPropagation()}
+          >
+            more
+          </a>
+          <button
+            className={styles.overlayClose}
+            onClick={(e) => { e.stopPropagation(); setActiveId(null); }}
+          >
+            close
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className={`${styles.page} pageEnter`}>
       <SiteHeader />
 
-      <main className={styles.main} id="works">
-        {/* 上位 3件 — 3列 */}
-        <div
-          className={`${styles.topRow} ${styles.animRow}`}
-          ref={(el) => { rowRefs.current[0] = el; }}
-        >
-          {topProjects.map((p) => (
-            <div
-              key={p.id}
-              className={`${styles.card} ${activeId === p.id ? styles.cardActive : ''}`}
-              onClick={() => handleCardClick(p.id)}
-            >
-              <div className={styles.cardThumb}>
-                <img src={p.image} alt={p.name} className={styles.cardImg} />
-              </div>
-              <div className={styles.cardInfo}>
-                <div className={styles.badgeRow}>
-                  <span className={p.category === 'LINE' ? styles.categoryLine : styles.categoryLp}>{p.category}</span>
-                  {p.badges.includes('Lステップ') && (
-                    <span className={styles.categoryLstep}>Lステップ</span>
-                  )}
-                  {p.badges.filter((b) => b !== 'LINE' && b !== 'Lステップ' && EXTRA_BADGE_STYLES[b]).map((b) => (
-                    <span key={b} className={styles[EXTRA_BADGE_STYLES[b] as keyof typeof styles]}>{b}</span>
-                  ))}
-                </div>
-                <div className={styles.cardName}>{p.name}</div>
-              </div>
-              {/* ホバー / タップ オーバーレイ */}
-              <div className={styles.cardOverlay}>
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.overlayMore}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  more
-                </a>
-                {/* close はスマホのみ表示 */}
-                <button
-                  className={styles.overlayClose}
-                  onClick={(e) => { e.stopPropagation(); setActiveId(null); }}
-                >
-                  close
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* カテゴリーナビ */}
+      <nav className={styles.categoryNav} ref={categoryNavRef}>
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat.id}
+            className={`${styles.categoryNavItem} ${activeCategory === cat.id ? styles.categoryNavItemActive : ''}`}
+            onClick={() => {
+              document.getElementById(cat.id)?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </nav>
 
-        {/* それ以降 — 2列ペア */}
-        <div className={styles.bottomSection}>
-          {pairs.map((pair, i) => (
-            <div
-              key={i}
-              className={`${styles.pairRow} ${styles.animRow}`}
-              ref={(el) => { rowRefs.current[i + 1] = el; }}
-            >
-              {pair.map((p) => (
+      <main className={styles.main} id="works">
+        {CATEGORIES.map((cat, catIdx) => {
+          const catProjects = PROJECTS.filter((p) => p.cat === cat.id);
+          const isHero = cat.id === 'cat-dev';
+          return (
+            <section key={cat.id} id={cat.id} className={styles.section}>
+              <h2 className={styles.sectionTitle}>{cat.label}</h2>
+              {catProjects.length === 0 ? (
+                <p className={styles.comingSoon}>Coming Soon</p>
+              ) : (
                 <div
-                  key={p.id}
-                  className={`${styles.card} ${activeId === p.id ? styles.cardActive : ''}`}
-                  onClick={() => handleCardClick(p.id)}
+                  className={`${isHero ? styles.heroGrid : styles.grid} ${styles.animRow}`}
+                  ref={(el) => { gridRefs.current[catIdx] = el; }}
                 >
-                  <div className={styles.cardThumb}>
-                    <img src={p.image} alt={p.name} className={styles.cardImg} />
-                  </div>
-                  <div className={styles.cardInfo}>
-                    <div className={styles.badgeRow}>
-                      <span className={p.category === 'LINE' ? styles.categoryLine : styles.categoryLp}>{p.category}</span>
-                      {p.badges.includes('Lステップ') && (
-                        <span className={styles.categoryLstep}>Lステップ</span>
-                      )}
-                      {p.badges.filter((b) => b !== 'LINE' && b !== 'Lステップ' && EXTRA_BADGE_STYLES[b]).map((b) => (
-                        <span key={b} className={styles[EXTRA_BADGE_STYLES[b] as keyof typeof styles]}>{b}</span>
-                      ))}
-                    </div>
-                    <div className={styles.cardName}>{p.name}</div>
-                  </div>
-                  <div className={styles.cardOverlay}>
-                    <a
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.overlayMore}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      more
-                    </a>
-                    <button
-                      className={styles.overlayClose}
-                      onClick={(e) => { e.stopPropagation(); setActiveId(null); }}
-                    >
-                      close
-                    </button>
-                  </div>
+                  {catProjects.map(renderCard)}
                 </div>
-              ))}
-            </div>
-          ))}
-        </div>
+              )}
+            </section>
+          );
+        })}
+
+        {/* LP・Web制作（別セクション） */}
+        <section className={styles.lpSection}>
+          <h2 className={styles.lpSectionTitle}>その他の制作（LP）</h2>
+          <div
+            className={`${styles.lpGrid} ${styles.animRow}`}
+            ref={(el) => { gridRefs.current[CATEGORIES.length] = el; }}
+          >
+            {PROJECTS.filter((p) => p.cat === 'cat4').map(renderCard)}
+          </div>
+        </section>
       </main>
     </div>
   );

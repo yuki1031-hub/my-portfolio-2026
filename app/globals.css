@@ -6,9 +6,11 @@
 
 html {
   font-size: 16px;
+  /* overflow-x は未設定（default: visible）— body の overflow-x: hidden が viewport に伝播し、
+     viewport がスクロールコンテナになることで position: sticky が正常に機能する */
 }
 
-html, body {
+body {
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 400;
   background-color: #ffffff;

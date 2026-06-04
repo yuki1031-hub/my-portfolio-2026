@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'HSHKW',
-  description: 'Portfolio of Hihkw — LINE chatbot, LP design, freelance engineer',
+  description: 'Portfolio of Hishikawa — LINE公式アカウント構築・LIFF/API連携・AIチャットボット開発のフリーランスエンジニア',
 };
 
 export default function RootLayout({

@@ -3,8 +3,7 @@
    上部余白: PC=5%  SP=2%  (内部 padding-top)
 ───────────────────────────────── */
 .header {
-  position: sticky;
-  top: 0;
+  position: relative;          /* スクロールで流れる — カテゴリーナビが top:0 に到達できるようにする */
   z-index: 200;
   display: flex;
   align-items: flex-end;       /* コンテンツはヘッダー底辺に揃える */
