@@ -265,10 +265,11 @@
 }
 
 /* スタッガー表示 */
-.panelOpen .panelItem:nth-child(1) { opacity: 1; transform: translateX(0); transition-delay: 0.1s; }
-.panelOpen .panelItem:nth-child(2) { opacity: 1; transform: translateX(0); transition-delay: 0.18s; }
-.panelOpen .panelItem:nth-child(3) { opacity: 1; transform: translateX(0); transition-delay: 0.26s; }
-.panelOpen .panelItem:nth-child(4) { opacity: 1; transform: translateX(0); transition-delay: 0.34s; }
+.panelOpen .panelItem:nth-child(1) { opacity: 1; transform: translateX(0); transition-delay: 0.08s; }
+.panelOpen .panelItem:nth-child(2) { opacity: 1; transform: translateX(0); transition-delay: 0.15s; }
+.panelOpen .panelItem:nth-child(3) { opacity: 1; transform: translateX(0); transition-delay: 0.22s; }
+.panelOpen .panelItem:nth-child(4) { opacity: 1; transform: translateX(0); transition-delay: 0.29s; }
+.panelOpen .panelItem:nth-child(5) { opacity: 1; transform: translateX(0); transition-delay: 0.36s; }
 
 .panelEn {
   display: block;

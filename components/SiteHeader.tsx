@@ -17,9 +17,14 @@ export default function SiteHeader() {
     return () => document.removeEventListener('keydown', onKey);
   }, []);
 
-  // ページトランジション付き遷移
+  // ページトランジション付き遷移（アンカーはスクロール、別ページは push）
   const navigate = async (href: string) => {
     setIsOpen(false);
+    if (href.startsWith('/#')) {
+      const id = href.slice(2);
+      const el = document.getElementById(id);
+      if (el) { el.scrollIntoView({ behavior: 'smooth' }); return; }
+    }
     await runPageTransition();
     router.push(href);
   };
@@ -36,8 +41,9 @@ export default function SiteHeader() {
           <div className={styles.midBottom}>
             <span className={styles.sub}>Freelance Web Engineer / LINE構築・チャットボット制作</span>
             <nav className={styles.headerNav} aria-label="ページナビゲーション">
-              <button className={styles.navLink} onClick={() => navigate('/#works')}>WORKS</button>
-              <button className={styles.navLink} onClick={() => navigate('/contact')}>CONTACT</button>
+              <button className={styles.navLink} onClick={() => navigate('/#services')}>SERVICES</button>
+              <button className={styles.navLink} onClick={() => navigate('/#cases')}>CASES</button>
+              <button className={styles.navLink} onClick={() => navigate('/#contact')}>CONTACT</button>
               <button className={styles.navLink} onClick={() => navigate('/about')}>ABOUT</button>
               <a
                 className={styles.navLinkDev}
@@ -94,10 +100,13 @@ export default function SiteHeader() {
         <div className={styles.panelLine} aria-hidden="true" />
 
         <nav className={styles.panelNav}>
-          <button className={styles.panelItem} onClick={() => navigate('/#works')}>
-            <span className={styles.panelEn}>Works</span>
+          <button className={styles.panelItem} onClick={() => navigate('/#services')}>
+            <span className={styles.panelEn}>Services</span>
           </button>
-          <button className={styles.panelItem} onClick={() => navigate('/contact')}>
+          <button className={styles.panelItem} onClick={() => navigate('/#cases')}>
+            <span className={styles.panelEn}>Cases</span>
+          </button>
+          <button className={styles.panelItem} onClick={() => navigate('/#contact')}>
             <span className={styles.panelEn}>Contact</span>
           </button>
           <button className={styles.panelItem} onClick={() => navigate('/about')}>
