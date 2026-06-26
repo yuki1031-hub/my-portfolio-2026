@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import SiteHeader from '../components/SiteHeader';
 import styles from './page.module.css';
 
-/* ─── 事例データ ─── */
+/* ─── 事例データ（代表作のみ） ─── */
 const CASES = [
   {
     id: 'campaign',
@@ -21,24 +21,6 @@ const CASES = [
       { id: 'vps', label: 'さくらVPS', desc: 'Node.js サーバー + SQLite でデータ永続化・複数キャンペーン管理' },
       { id: 'lstep', label: 'Lステップ', desc: 'タグ連携で当選/落選メッセージを自動配信' },
     ],
-  },
-  {
-    id: 'snack',
-    title: '外部ツール不要で、常連客の来店記録を自動化',
-    challenge: 'バー・美容室など常連商売の店舗が、来店記録や顧客対応を手作業で行っており属人化していた',
-    approach: 'LINE音声認識（Whisper）＋AI＋DB連携で、会話から顧客情報を自動記録。Make等の外部ツール不要・低コストで実現',
-    result: '接客しながら記録が残る仕組みを構築。ランニングコストを抑えた運用が可能に',
-    tags: ['Messaging API', 'Whisper', 'GPT-4o-mini', 'Google Sheets'],
-    url: 'https://flying-glazer-dfd.notion.site/LINE-33091932982b805c9ed4c647158642a1?source=copy_link',
-  },
-  {
-    id: 'ragbot',
-    title: '公式ドキュメントを学習し、問い合わせ対応を自動化',
-    challenge: 'LINE公式の仕様は範囲が広く、問い合わせのたびに調べる手間が発生していた',
-    approach: '公式ドキュメントをベクトル化し、RAGで回答するチャットボットを構築',
-    result: 'ドキュメントに基づく回答を自動化。デモとして公開・検証可能',
-    tags: ['Python', 'LangChain', 'FAISS', 'FastAPI', 'Streamlit'],
-    url: 'https://flying-glazer-dfd.notion.site/LINE-RAG-33b91932982b802ab904d10a2fd2d28e?source=copy_link',
   },
 ];
 
@@ -87,20 +69,13 @@ export default function Home() {
       const { ScrollTrigger } = await import('gsap/ScrollTrigger');
       gsap.registerPlugin(ScrollTrigger);
 
-      /* ヒーロー: 行ごと reveal */
-      const lines = heroTextRef.current?.querySelectorAll('[data-reveal]');
-      if (lines) {
+      /* ヒーロー: フワッと登場 */
+      const heroText = heroTextRef.current;
+      if (heroText) {
         gsap.fromTo(
-          Array.from(lines),
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: 'power3.out',
-            stagger: 0.15,
-            delay: 0.3,
-          }
+          heroText,
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out', delay: 0.2 }
         );
       }
 
@@ -139,22 +114,6 @@ export default function Home() {
         });
       }
 
-      /* ヒーロー: 右ビジュアルのパララックス (PC のみ、コピーより遅め) */
-      if (window.innerWidth >= 768) {
-        const heroVisual = document.querySelector('[data-parallax-hero]');
-        if (heroVisual) {
-          gsap.to(heroVisual, {
-            y: -60,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '#hero',
-              start: 'top top',
-              end: 'bottom top',
-              scrub: true,
-            },
-          });
-        }
-      }
     })();
   }, []);
 
@@ -227,47 +186,15 @@ export default function Home() {
         {/* 背景レイヤー: ヒーローに白地を確保 */}
         <div className={styles.heroBg} aria-hidden="true" />
         <div className={styles.heroInner}>
-          {/* 左: テキスト */}
           <div className={styles.heroText} ref={heroTextRef}>
-            <span className={styles.heroConceptLabel} data-reveal>Concept</span>
             <h1 className={styles.heroHeading}>
-              {/* 推奨案B。他案はコメントで保持:
-                  A: "作って終わり"にしない。集客が回る仕組みまで設計する
-                  C: "何から頼めばいいか分からない" を解決する
-              */}
-              <span className={styles.heroLine} data-reveal>ノーコードの限界も、</span>
-              <span className={styles.heroLine} data-reveal>コードで超える。</span>
+              LINE集客の仕組み化
             </h1>
-            <p className={styles.heroSubtitle} data-reveal>
-              LINE構築 × システム開発
-            </p>
-            <p className={styles.heroDesc} data-reveal>
+            <p className={styles.heroDesc}>
               Lステップ・エルメでのLINE構築から、LIFF・API連携・VPS運用まで。
-              <br className={styles.heroDescBr} />
+              <br />
               フリーランスエンジニアが一気通貫で対応します。
             </p>
-            <div className={styles.heroCta} data-reveal>
-              <a href="#contact" className={styles.ctaPrimary}>
-                LINE集客・構築を相談する
-              </a>
-              <a href="#contact" className={styles.ctaSecondary}>
-                システム・AI開発を相談する
-              </a>
-            </div>
-          </div>
-
-          {/* 右: ビジュアル（パララックス対象） */}
-          <div className={styles.heroVisualWrap}>
-            <div className={styles.heroVisual} data-parallax-hero>
-              <div className={styles.heroVisualPlaceholder}>
-                {/* 画像差し替え予定: <img src="/images/hero.png" alt="" /> */}
-                <div className={styles.heroVisualBg}>
-                  <div className={styles.heroDeco1} />
-                  <div className={styles.heroDeco2} />
-                  <div className={styles.heroDeco3} />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -281,24 +208,24 @@ export default function Home() {
             <div className={styles.sectionLabel}>Services</div>
             <h2 className={styles.sectionTitle}>「解決できること」で選べる3つのサービス</h2>
 
-            {/* 01 */}
+            {/* 01 LINE構築 */}
             <div className={styles.serviceItem}>
               <div className={styles.serviceImgWrap}>
                 <div className={styles.serviceImgPlaceholder}>
-                  <img src="/images/campaign-th.png" alt="カスタム開発" className={styles.serviceImg} />
+                  <img src="/images/golfth.png" alt="LINE構築" className={styles.serviceImg} />
                 </div>
               </div>
               <div className={styles.serviceContent}>
                 <div className={styles.serviceNum}>01</div>
-                <h3 className={styles.serviceHeading}>カスタム開発・API連携</h3>
-                <p className={styles.serviceDesc}>既製ツールでは実現できない仕組みを、コードで構築します。</p>
+                <h3 className={styles.serviceHeading}>LINE構築（Lステップ・エルメ）</h3>
+                <p className={styles.serviceDesc}>友だち追加から成約まで、LINE内の導線を設計・自動化します。</p>
                 <ul className={styles.serviceMenu}>
-                  <li>LIFF / Messaging API を使ったLINEアプリ開発</li>
-                  <li>抽選・キャンペーンシステムのフルスクラッチ構築</li>
-                  <li>VPS構築・本番運用・保守</li>
+                  <li>アカウント初期構築・初期設定</li>
+                  <li>リッチメニュー / フォーム / タグ設計・分岐</li>
+                  <li>ステップ配信・診断コンテンツ制作</li>
                 </ul>
                 <a
-                  href="https://flying-glazer-dfd.notion.site/LINE-37591932982b804eaff7c06f971c5ea0?source=copy_link"
+                  href="https://flying-glazer-dfd.notion.site/LINE-34991932982b8072898bc2df9daed841?source=copy_link"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.serviceLink}
@@ -308,7 +235,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 02 */}
+            {/* 02 AI活用 */}
             <div className={`${styles.serviceItem} ${styles.serviceItemReverse}`}>
               <div className={styles.serviceImgWrap}>
                 <div className={styles.serviceImgPlaceholder}>
@@ -335,24 +262,24 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 03 */}
+            {/* 03 カスタム開発 */}
             <div className={styles.serviceItem}>
               <div className={styles.serviceImgWrap}>
                 <div className={styles.serviceImgPlaceholder}>
-                  <img src="/images/golfth.png" alt="LINE構築" className={styles.serviceImg} />
+                  <img src="/images/campaign-th.png" alt="カスタム開発" className={styles.serviceImg} />
                 </div>
               </div>
               <div className={styles.serviceContent}>
                 <div className={styles.serviceNum}>03</div>
-                <h3 className={styles.serviceHeading}>LINE構築（Lステップ・エルメ）</h3>
-                <p className={styles.serviceDesc}>友だち追加から成約まで、LINE内の導線を設計・自動化します。</p>
+                <h3 className={styles.serviceHeading}>カスタム開発・API連携</h3>
+                <p className={styles.serviceDesc}>既製ツールでは実現できない仕組みを、コードで構築します。</p>
                 <ul className={styles.serviceMenu}>
-                  <li>アカウント初期構築・初期設定</li>
-                  <li>リッチメニュー / フォーム / タグ設計・分岐</li>
-                  <li>ステップ配信・診断コンテンツ制作</li>
+                  <li>LIFF / Messaging API を使ったLINEアプリ開発</li>
+                  <li>抽選・キャンペーンシステムのフルスクラッチ構築</li>
+                  <li>VPS構築・本番運用・保守</li>
                 </ul>
                 <a
-                  href="https://flying-glazer-dfd.notion.site/LINE-34991932982b8072898bc2df9daed841?source=copy_link"
+                  href="https://flying-glazer-dfd.notion.site/LINE-37591932982b804eaff7c06f971c5ea0?source=copy_link"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.serviceLink}
@@ -466,16 +393,6 @@ export default function Home() {
                       <div className={styles.tlDesc}>品質管理7年。新商品の全国展開プロジェクトオーナー</div>
                     </div>
                   </div>
-                </div>
-                <div className={styles.profileSns}>
-                  <a
-                    href="https://x.com/hshkwx"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.snsLink}
-                  >
-                    𝕏 @hshkwx
-                  </a>
                 </div>
               </div>
             </div>

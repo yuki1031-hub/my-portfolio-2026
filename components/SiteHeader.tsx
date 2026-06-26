@@ -36,14 +36,12 @@ export default function SiteHeader() {
         {/* ロゴ画像 */}
         <img src="/images/logo.png" alt="ロゴ" className={styles.logoBox} />
 
-        {/* 中央: subtitle + nav リンクを底辺に揃える */}
+        {/* 中央: nav リンク + CTA */}
         <div className={styles.mid}>
           <div className={styles.midBottom}>
-            <span className={styles.sub}>Freelance Web Engineer / LINE構築・チャットボット制作</span>
             <nav className={styles.headerNav} aria-label="ページナビゲーション">
               <button className={styles.navLink} onClick={() => navigate('/#services')}>SERVICES</button>
               <button className={styles.navLink} onClick={() => navigate('/#cases')}>CASES</button>
-              <button className={styles.navLink} onClick={() => navigate('/#contact')}>CONTACT</button>
               <button className={styles.navLink} onClick={() => navigate('/about')}>ABOUT</button>
               <a
                 className={styles.navLinkDev}
@@ -53,6 +51,12 @@ export default function SiteHeader() {
               >
                 Dev Portfolio
               </a>
+              <button className={styles.ctaLine} onClick={() => navigate('/#contact')}>
+                LINE集客・構築を相談する
+              </button>
+              <button className={styles.ctaSystem} onClick={() => navigate('/#contact')}>
+                システム・AI開発を相談する
+              </button>
             </nav>
           </div>
         </div>

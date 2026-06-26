@@ -69,25 +69,65 @@
   opacity: 0.5;
 }
 
-/* Dev Portfolio ボタン（白背景・黒文字・枠線） */
+/* Dev Portfolio（枠なし・シンプルリンク） */
 .navLinkDev {
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 15px;
   color: #111111;
   letter-spacing: 0.1em;
-  background: #ffffff;
-  border: 1.5px solid #111111;
-  border-radius: 6px;
-  padding: 4px 12px;
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  transition: opacity 0.2s;
   white-space: nowrap;
 }
 
 .navLinkDev:hover {
+  opacity: 0.5;
+}
+
+/* ─ ヘッダー内 CTA ─ */
+.ctaLine {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  background: #1D1A76;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s, transform 0.18s;
+}
+
+.ctaLine:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.ctaSystem {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #111111;
+  background: transparent;
+  border: 1.5px solid #111111;
+  border-radius: 7px;
+  padding: 7px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s, transform 0.18s;
+}
+
+.ctaSystem:hover {
   background: #111111;
   color: #ffffff;
+  transform: translateY(-1px);
 }
 
 /* ─ 右（花ボタン） ─ */
@@ -179,7 +219,7 @@
   right: 0;
   width: min(320px, 85vw);
   height: 100dvh;
-  background: #b6ff47;          /* 蛍光色に近い明るい緑 */
+  background: #969CB5;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -230,8 +270,8 @@
   display: flex;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  color: #111111;               /* 黒基調 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
   background: none;
   border-left: none;
   border-right: none;
@@ -254,14 +294,14 @@
   border-bottom: none;
 }
 
-/* ホバー: ズーム + オレンジに変化 */
+/* ホバー: ズーム + 蛍光グリーンに変化 */
 .panelItem:hover {
   scale: 1.06;
-  color: #f59e0b;
+  color: #b6ff47;
 }
 
 .panelItem:hover .panelEn {
-  color: #f59e0b;
+  color: #b6ff47;
 }
 
 /* スタッガー表示 */
@@ -281,20 +321,20 @@
   transition: color 0.25s ease;
 }
 
-/* Dev Portfolio: 白背景・黒文字 */
+/* Dev Portfolio: 半透明白背景 */
 .panelItemDev {
   text-decoration: none;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
   border-radius: 8px;
   padding: 14px 16px;
   margin-top: 8px;
-  color: #111111 !important;
+  color: #ffffff !important;
   border-bottom: none !important;
 }
 
 .panelItemDev:hover {
+  background: #b6ff47;
   color: #111111 !important;
-  background: #f0f0f0;
 }
 
 .panelItemDev:hover .panelEn {
