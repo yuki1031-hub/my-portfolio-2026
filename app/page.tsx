@@ -104,32 +104,47 @@ export default function Home() {
         );
       }
 
-      /* セクション: fade-up */
+      /* セクション: slide-up（opacity は除外 — sticky hero を透かさないため） */
       sectionsRef.current.forEach((el) => {
         if (!el) return;
         gsap.fromTo(
           el,
-          { y: 50, opacity: 0 },
+          { y: 40 },
           {
             y: 0,
-            opacity: 1,
             duration: 0.75,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: el,
-              start: 'top 82%',
+              start: 'top 88%',
               toggleActions: 'play none none none',
             },
           }
         );
       });
 
-      /* ヒーロー: 右ビジュアルのパララックス (PC のみ) */
+      /* ヒーロー: コピーのドリフト + フェード (scrub) */
+      const heroCopy = heroTextRef.current;
+      if (heroCopy) {
+        gsap.to(heroCopy, {
+          y: -Math.round(window.innerHeight * 0.18),
+          opacity: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        });
+      }
+
+      /* ヒーロー: 右ビジュアルのパララックス (PC のみ、コピーより遅め) */
       if (window.innerWidth >= 768) {
         const heroVisual = document.querySelector('[data-parallax-hero]');
         if (heroVisual) {
           gsap.to(heroVisual, {
-            y: -80,
+            y: -60,
             ease: 'none',
             scrollTrigger: {
               trigger: '#hero',
@@ -209,6 +224,8 @@ export default function Home() {
           1. HERO
       ════════════════════════════════════ */}
       <section id="hero" className={styles.hero}>
+        {/* 背景レイヤー: ヒーローに白地を確保 */}
+        <div className={styles.heroBg} aria-hidden="true" />
         <div className={styles.heroInner}>
           {/* 左: テキスト */}
           <div className={styles.heroText} ref={heroTextRef}>
@@ -255,11 +272,11 @@ export default function Home() {
         </div>
       </section>
 
-      <main>
+      <main className={styles.mainContent}>
         {/* ════════════════════════════════════
             2. SERVICES
         ════════════════════════════════════ */}
-        <section id="services" className={styles.section} ref={addSectionRef(0)}>
+        <section id="services" className={`${styles.section} ${styles.sectionFirst}`} ref={addSectionRef(0)}>
           <div className={styles.sectionInner}>
             <div className={styles.sectionLabel}>Services</div>
             <h2 className={styles.sectionTitle}>「解決できること」で選べる3つのサービス</h2>

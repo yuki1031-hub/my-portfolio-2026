@@ -12,15 +12,27 @@
    HERO
 ═══════════════════════════════════════════ */
 .hero {
-  min-height: 92vh;
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  z-index: 0;
+  overflow: hidden;
   display: flex;
   align-items: center;
   padding: 0 8%;
-  overflow: hidden;
-  position: relative;
+}
+
+/* 背景レイヤー（白地でヒーローの背景を確保） */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #ffffff;
 }
 
 .heroInner {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -36,6 +48,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  will-change: transform, opacity;
 }
 
 .heroConceptLabel {
@@ -195,14 +208,37 @@
 }
 
 /* ═══════════════════════════════════════════
+   MAIN（ヒーローを覆うコンテナ）
+═══════════════════════════════════════════ */
+.mainContent {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+}
+
+/* ═══════════════════════════════════════════
    SECTION 共通
 ═══════════════════════════════════════════ */
 .section {
   padding: 100px 8%;
+  background: #ffffff;
+}
+
+/* ヒーロー直後のセクション: 覆いかぶさる質感 */
+.sectionFirst {
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -30px 60px rgba(8, 14, 40, 0.18);
 }
 
 .sectionDark {
   background: #f7f8fa;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroText {
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }
 
 .sectionInner {
