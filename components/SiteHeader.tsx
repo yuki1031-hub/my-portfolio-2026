@@ -33,9 +33,6 @@ export default function SiteHeader() {
     <>
       {/* ─── Header ─── */}
       <header className={styles.header}>
-        {/* ロゴ画像 */}
-        <img src="/images/logo.png" alt="ロゴ" className={styles.logoBox} />
-
         {/* 中央: nav リンク + CTA */}
         <div className={styles.mid}>
           <div className={styles.midBottom}>

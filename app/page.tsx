@@ -26,10 +26,10 @@ const CASES = [
 
 /* ─── 実績データ ─── */
 const ACHIEVEMENTS = [
-  { company: '株式会社Capex', detail: 'LINE公式アカウント配信の品質管理を継続受託' },
+  { company: 'チャットコマース系ITベンチャー', detail: 'LINE公式アカウント配信の品質管理を継続受託' },
   { company: '住宅メーカー', detail: '大規模LINE抽選キャンペーンを単独構築・本番稼働' },
   { company: 'ゴルフ用品買取サービス', detail: 'エルメ × LINE の集客・フォーム自動化を構築' },
-  { company: 'クラウドソーシング', detail: 'Lancers / CrowdWorks 経由で継続案件を受注' },
+  { company: 'スキンケアメーカー', detail: 'Lステップ × LINE リッチメニュー作成、ステップ配信' },
 ];
 
 export default function Home() {
@@ -98,23 +98,7 @@ export default function Home() {
         );
       });
 
-      /* ヒーロー: コピーのドリフト + フェード (scrub) */
-      const heroCopy = heroTextRef.current;
-      if (heroCopy) {
-        gsap.to(heroCopy, {
-          y: -Math.round(window.innerHeight * 0.18),
-          opacity: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          },
-        });
-      }
-
-    })();
+})();
   }, []);
 
   /* ─── カウントアップ ─── */
@@ -188,7 +172,7 @@ export default function Home() {
         <div className={styles.heroInner}>
           <div className={styles.heroText} ref={heroTextRef}>
             <h1 className={styles.heroHeading}>
-              LINE集客の仕組み化
+              ゴールまでの道のりを、LINEで設計。
             </h1>
             <p className={styles.heroDesc}>
               Lステップ・エルメでのLINE構築から、LIFF・API連携・VPS運用まで。
@@ -358,10 +342,10 @@ export default function Home() {
             <h2 className={styles.sectionTitle}>PROFILE</h2>
             <div className={styles.profileWrap}>
               <div className={styles.profileImgWrap}>
-                <img src="/images/about.JPG" alt="石川悠起" className={styles.profileImg} />
+                <img src="/images/about.JPG" alt="hishi" className={styles.profileImg} />
               </div>
               <div className={styles.profileContent}>
-                <p className={styles.profileName}>石川 悠起</p>
+                <p className={styles.profileName}>hishi</p>
                 <p className={styles.profileRole}>フリーランス Web エンジニア</p>
                 <p className={styles.profileBio}>
                   「品質管理の視点」×「エンジニアリング」。
@@ -373,7 +357,7 @@ export default function Home() {
                     <div className={styles.tlDot} />
                     <div className={styles.tlBody}>
                       <div className={styles.tlDate}>2026〜</div>
-                      <div className={styles.tlTitle}>フリーランス独立</div>
+                      <div className={styles.tlTitle}>フリーランスとして稼働開始</div>
                       <div className={styles.tlDesc}>LINE構築・チャットボット・AI活用システムを提供</div>
                     </div>
                   </div>
@@ -381,7 +365,7 @@ export default function Home() {
                     <div className={styles.tlDot} />
                     <div className={styles.tlBody}>
                       <div className={styles.tlDate}>〜2024</div>
-                      <div className={styles.tlTitle}>Algoage（チャットコマース系ITベンチャー）</div>
+                      <div className={styles.tlTitle}>チャットコマース系ITベンチャー</div>
                       <div className={styles.tlDesc}>LINEチャットボット実装</div>
                     </div>
                   </div>

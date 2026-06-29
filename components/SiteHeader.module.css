@@ -94,11 +94,11 @@
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: #ffffff;
-  background: #1D1A76;
-  border: none;
+  color: #0614CF;
+  background: #ffffff;
+  border: 1.5px solid #0614CF;
   border-radius: 7px;
-  padding: 8px 16px;
+  padding: 7px 16px;
   cursor: pointer;
   white-space: nowrap;
   transition: opacity 0.2s, transform 0.18s;
@@ -173,7 +173,7 @@
 
 /* ホバー前: 青基調・塗りつぶし */
 .petal {
-  fill: #1a4fa0;
+  fill: #0614CF;
   stroke: none;
   transition: fill 0.4s ease, filter 0.4s ease;
 }

@@ -22,12 +22,21 @@
   padding: 0 8%;
 }
 
-/* 背景レイヤー（白地でヒーローの背景を確保） */
+/* 背景レイヤー（背景画像） */
 .heroBg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #ffffff;
+  background-image: url('/images/topbg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.heroBg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
 }
 
 .heroInner {
@@ -62,7 +71,7 @@
   font-size: clamp(32px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.35;
-  color: #111111;
+  color: #ffffff;
   letter-spacing: 0.04em;
   margin: 0;
 }
@@ -70,7 +79,7 @@
 .heroDesc {
   font-size: 15px;
   line-height: 2;
-  color: #555;
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
 }
 
@@ -177,7 +186,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -206,7 +215,7 @@
 
 .serviceDesc {
   font-size: 14px;
-  color: #555;
+  color: #1D1A76;
   line-height: 1.8;
   margin: 0;
 }
@@ -222,7 +231,7 @@
 
 .serviceMenu li {
   font-size: 13px;
-  color: #333;
+  color: #1D1A76;
   line-height: 1.7;
   padding-left: 16px;
   position: relative;
@@ -282,7 +291,7 @@
 
 .achieveDetail {
   font-size: 14px;
-  color: #333;
+  color: #1D1A76;
   line-height: 1.7;
 }
 
@@ -317,8 +326,9 @@
   display: inline-block;
   font-size: 11px;
   font-weight: 700;
-  background: #f59e0b;
-  color: #ffffff;
+  background: #ffffff;
+  color: #0614CF;
+  border: 1.5px solid #0614CF;
   padding: 3px 12px;
   border-radius: 20px;
   letter-spacing: 0.08em;
@@ -357,13 +367,13 @@
 
 .caseDd {
   font-size: 13px;
-  color: #444;
+  color: #1D1A76;
   line-height: 1.8;
   margin: 0;
 }
 
 .caseDdResult {
-  color: #111111;
+  color: #1D1A76;
   font-weight: 500;
 }
 
@@ -509,7 +519,7 @@
 
 .profileRole {
   font-size: 13px;
-  color: #666;
+  color: #1D1A76;
   letter-spacing: 0.1em;
   margin: 0;
   margin-top: -12px;
@@ -518,7 +528,7 @@
 .profileBio {
   font-size: 14px;
   line-height: 2;
-  color: #444;
+  color: #1D1A76;
   margin: 0;
 }
 
@@ -586,7 +596,7 @@
 
 .tlDesc {
   font-size: 13px;
-  color: #555;
+  color: #1D1A76;
   line-height: 1.7;
 }
 
@@ -633,26 +643,28 @@
 
 .contactSub {
   font-size: 14px;
-  color: #555;
+  color: #1D1A76;
   line-height: 2;
   margin: 0 0 40px;
 }
 
 .contactBtn {
   display: inline-block;
-  background: #111111;
-  color: #ffffff;
+  background: #ffffff;
+  color: #0614CF;
+  border: 1.5px solid #0614CF;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.1em;
   padding: 18px 48px;
   border-radius: 8px;
   text-decoration: none;
-  transition: background 0.22s ease, transform 0.18s ease;
+  transition: background 0.22s ease, color 0.22s ease, transform 0.18s ease;
 }
 
 .contactBtn:hover {
-  background: #1a4fa0;
+  background: #0614CF;
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
